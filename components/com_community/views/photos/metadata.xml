@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<view title="Photos">
+		<message>
+			<![CDATA[
+				Photo's view
+			]]>
+		</message>
+		<options var="task">
+ 			<default name="Member Albums" msg="Displays all members photos from the site" />
+			<option value="event" name="- Event Photos" msg="Displays all photos from events" />
+			<option value="group" name="- Group Photos" msg="Displays all photos from groups" />
+			<option value="myphotos" name="- My Photos" msg="Displays recent photos from specific user" />
+			<option value="newalbum" name="- Create Album" msg="Create new album layout" />
+ 		</options>
+	</view>
+	<state>
+		<name>Photos Layout</name>
+		<description>Photo listings</description>
+	</state>
+</metadata>

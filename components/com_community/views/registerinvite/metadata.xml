@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<view title="Request Invitation">
+		<message>
+			<![CDATA[
+				Request invitation view
+			]]>
+		</message>
+		<options var="task">
+		    <option value="requestinvite" name="Request Invitation" msg="Request invitation for new user" />
+		</options>
+	</view>
+	<state>
+		<name>Request Invitation Layout</name>
+		<description>Displays the request invitation form</description>
+	</state>
+</metadata>

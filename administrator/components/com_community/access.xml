@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE access>
+<access component="com_community">
+	<section name="component">
+            <action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
+
+        	<action name="community.profileedit" title="COM_COMMUNTITY_PERMISSIONS_PROFILEEDIT" description="COM_COMMUNTITY_PERMISSIONS_PROFILEEDIT_DESC" />
+            <action name="community.profileeditstate" title="COM_COMMUNTITY_PERMISSIONS_PROFILEEDITSTATE" description="COM_COMMUNTITY_PERMISSIONS_PROFILEEDITSTATE_DESC" />
+
+            <action name="community.groupcreate" title="COM_COMMUNTITY_PERMISSIONS_GROUPCREATE" description="COM_COMMUNTITY_PERMISSIONS_GROUPCREATE_DESC" />
+            <action name="community.groupdelete" title="COM_COMMUNTITY_PERMISSIONS_GROUPDELETE" description="COM_COMMUNTITY_PERMISSIONS_GROUPDELETE_DESC" />
+            <action name="community.groupedit" title="COM_COMMUNTITY_PERMISSIONS_GROUPEDIT" description="COM_COMMUNTITY_PERMISSIONS_GROUPEDIT_DESC" />
+            <action name="community.groupeditstate" title="COM_COMMUNTITY_PERMISSIONS_GROUPEDITSTATE" description="COM_COMMUNTITY_PERMISSIONS_GROUPEDITSTATE_DESC" />
+
+            <action name="community.eventcreate" title="COM_COMMUNTITY_PERMISSIONS_EVENTCREATE" description="COM_COMMUNTITY_PERMISSIONS_EVENTCREATE_DESC" />
+            <action name="community.eventdelete" title="COM_COMMUNTITY_PERMISSIONS_EVENTDELETE" description="COM_COMMUNTITY_PERMISSIONS_EVENTDELETE_DESC" />
+            <action name="community.eventedit" title="COM_COMMUNTITY_PERMISSIONS_EVENTEDIT" description="COM_COMMUNTITY_PERMISSIONS_EVENTEDIT_DESC" />
+            <action name="community.eventeditstate" title="COM_COMMUNTITY_PERMISSIONS_EVENTEDITSTATE" description="COM_COMMUNTITY_PERMISSIONS_EVENTEDITSTATE_DESC" />
+
+            <action name="community.photocreate" title="COM_COMMUNTITY_PERMISSIONS_PHOTOCREATE" description="COM_COMMUNTITY_PERMISSIONS_PHOTOCREATE_DESC" />
+            <action name="community.photodelete" title="COM_COMMUNTITY_PERMISSIONS_PHOTODELETE" description="COM_COMMUNTITY_PERMISSIONS_PHOTODELETE_DESC" />
+            <action name="community.photoedit" title="COM_COMMUNTITY_PERMISSIONS_PHOTOEDIT" description="COM_COMMUNTITY_PERMISSIONS_PHOTOEDIT_DESC" />
+            <action name="community.photoeditstate" title="COM_COMMUNTITY_PERMISSIONS_PHOTOEDITSTATE" description="COM_COMMUNTITY_PERMISSIONS_PHOTOEDITSTATE_DESC" />
+
+            <action name="community.videocreate" title="COM_COMMUNTITY_PERMISSIONS_VIDEOCREATE" description="COM_COMMUNTITY_PERMISSIONS_VIDEOCREATE_DESC" />
+            <action name="community.videodelete" title="COM_COMMUNTITY_PERMISSIONS_VIDEODELETE" description="COM_COMMUNTITY_PERMISSIONS_VIDEODELETE_DESC" />
+            <action name="community.videoedit" title="COM_COMMUNTITY_PERMISSIONS_VIDEOEDIT" description="COM_COMMUNTITY_PERMISSIONS_VIDEOEDIT_DESC" />
+            <action name="community.videoeditstate" title="COM_COMMUNTITY_PERMISSIONS_VIDEOEDITSTATE" description="COM_COMMUNTITY_PERMISSIONS_VIDEOEDITSTATE_DESC" />
+
+            <action name="community.postcommentcreate" title="COM_COMMUNTITY_PERMISSIONS_POSTCOMMENTCREATE" description="COM_COMMUNTITY_PERMISSIONS_POSTCOMMENTCREATE_DESC" />
+            <action name="community.postcommentdelete" title="COM_COMMUNTITY_PERMISSIONS_POSTCOMMENTDELETE" description="COM_COMMUNTITY_PERMISSIONS_POSTCOMMENTDELETE_DESC" />
+            <action name="community.postcommentedit" title="COM_COMMUNTITY_PERMISSIONS_POSTCOMMENTEDIT" description="COM_COMMUNTITY_PERMISSIONS_POSTCOMMENTEDIT_DESC" />
+	</section>
+</access>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="readonly" type="radio" default="0" label="COM_COMMUNITY_TITLE_READ_ONLY" description="COM_COMMUNITY_TITLE_READ_ONLY_DESC">
+			<option value="0" name='COM_COMMUNITY_NO_OPTION'>No</option>
+			<option value="1" name='COM_COMMUNITY_YES_OPTION'>Yes</option>
+		</param>
+		<param name="min_char" type="text" default="" label="COM_COMMUNITY_TITLE_MIN_CHAR" description="COM_COMMUNITY_TITLE_MIN_CHAR_DESC" />
+		<param name="max_char" type="text" default="" label="COM_COMMUNITY_TITLE_MAX_CHAR" description="COM_COMMUNITY_TITLE_MAX_CHAR_DESC" />
+		<param name="style" type="text" default="" label="COM_COMMUNITY_TITLE_STYLE_ATTR" description="COM_COMMUNITY_TITLE_STYLE_ATTR_DESC" />
+		<param name="allowed" type="text" default="" label="COM_COMMUNITY_TITLE_ALLOW_DOMAIN" description="COM_COMMUNITY_TITLE_ALLOW_DOMAIN_DESC" />
+		<param name="blacklist" type="text" default="" label="COM_COMMUNITY_TITLE_BLACKLIST_DOMAIN" description="COM_COMMUNITY_TITLE_BLACKLIST_DOMAIN_DESC" />
+	</params>
+</config>

@@ -1,0 +1,86 @@
+.joms-pagination {
+    margin-top: ms(2);
+    margin-bottom: ms();
+    ul {
+        text-align:center;
+        @extend %rounded;
+        li {
+            display: inline;
+        }
+    }
+
+    .pagination-list {
+        @extend %joms-list;
+        @extend %clearfix;
+    }
+
+    li:first-child {
+        a,
+        span {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+    }
+
+    li:last-child {
+        a,
+        span {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+
+    li > a,
+    li > span {
+        display: inline !important; // !important for template override - temporary fix
+        border: 1px solid rgba(0,0,0,.05);
+        background: $scss-pagination-bg;
+        padding: ms(-1) ms() !important; // !important for template override - temporary fix
+        margin-left: -1px;
+        position: relative;
+        color: $scss-pagination-color;
+        &:hover,
+        &:focus {
+            background: $scss-pagination-bg-hover;
+            text-decoration: none;
+            color: $scss-pagination-color-hover;
+            z-index: 1;
+            border: 1px solid rgba(0,0,0,.05);
+        }
+    }
+
+    .active {
+        a,
+        > span {
+            background: $scss-pagination-bg-active;
+            border-color: $scss-pagination-bg-active;
+            color: $scss-pagination-color-active;
+            z-index: 2;
+
+            &:hover,
+            &:focus {
+                background: $scss-pagination-bg-active;
+                border-color: $scss-pagination-bg-active;
+                color: $scss-pagination-color-active;
+            }
+        }
+    }
+
+    .disabled {
+        a,
+        > span {
+            color: $scss-pagination-color-disabled;
+            border: 1px solid rgba(0,0,0,.05);
+            &:hover,
+            &:focus {
+                color: $scss-pagination-color-disabled;
+                background: $scss-pagination-bg-disabled;
+                border: 1px solid rgba(0,0,0,.05);
+            }
+        }
+    }
+
+    i {
+        line-height: 16px;
+    }
+}

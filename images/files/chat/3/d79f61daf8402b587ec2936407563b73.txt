@@ -1,0 +1,21 @@
+Repositorio SVN - Gfi
+-------------------------------
+http://192.168.101.221/svn/ejie135/
+
+
+Conexión BBDD - Local Gfi
+-------------------------------------
+Usuario: AA24T.
+
+ORCL10G=
+  (DESCRIPTION=
+    (ADDRESS=
+      (PROTOCOL=TCP)
+      (HOST=192.168.101.11)
+      (PORT=1521)
+    )
+    (CONNECT_DATA=
+      (SERVER=dedicated)
+      (SERVICE_NAME=ORCL10G)
+    )
+  )

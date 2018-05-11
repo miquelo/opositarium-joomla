@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<params>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="size" type="text" default="" label="COM_COMMUNITY_TITLE_SIZE" description="COM_COMMUNITY_TITLE_SIZE_DESC" />
+		<param name="style" type="text" default="" label="COM_COMMUNITY_TITLE_STYLE_ATTR" description="COM_COMMUNITY_TITLE_STYLE_ATTR_DESC" />
+	</params>
+</config>

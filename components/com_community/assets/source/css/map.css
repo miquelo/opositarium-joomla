@@ -1,0 +1,51 @@
+.joms-map--location-map {
+    height: 100px;
+}
+
+.joms-map--location-result {
+    padding-top: 10px;
+}
+
+.joms-map--location-result .joms-input {
+    margin-bottom: 5px;
+}
+
+.joms-map--location-loading {
+    display: none;
+    height: 220px;
+    text-align: center;
+}
+
+.joms-map--location-loading img {
+    padding-top: 10px;
+}
+
+.joms-map--location-selector {
+    height: 220px;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    width: auto;
+}
+
+.joms-map--location-item {
+    display: block;
+}
+
+.joms-map--location-item,
+.joms-map--location-item:hover {
+    color: inherit;
+    cursor: pointer;
+    line-height: 1.2em;
+    padding: 3px 0;
+    text-decoration: none;
+}
+
+.joms-map--location-item span {
+    font-size: .9em;
+}
+
+.joms-map--location-item--notice {
+    display: block;
+    font-style: italic;
+}

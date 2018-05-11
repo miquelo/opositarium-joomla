@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<view title="Messages">
+		<message>
+			<![CDATA[
+				Messages view
+			]]>
+		</message>
+		<options var="task">
+ 			<default name="Inbox" msg="Displays all personal messages" />
+ 		</options>
+	</view>
+	<state>
+		<name>Message Layout</name>
+		<description>Message listings layout</description>
+	</state>
+</metadata>

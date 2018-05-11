@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FacileFormsPackage id="mypck_001" type="autoincrement" version="1.8.3 Stable (build 831)">
+	<name>mypck_001</name>
+	<title>My First Package</title>
+	<version>0.0.1</version>
+	<creationDate>2013-06-11 12:58:14</creationDate>
+	<author>My Name</author>
+	<authorEmail>my.name@my.domain</authorEmail>
+	<authorUrl>http://www.my.domain</authorUrl>
+	<description>This is the first package that I created</description>
+	<copyright>This FacileForms package is released under the GNU/GPL license</copyright>
+	<form id="1">
+		<package>Formularios</package>
+		<name>contactorapido</name>
+		<title>Contacto rapido</title>
+		<class1>content_outline</class1>
+		<width>100</width>
+		<widthmode>1</widthmode>
+		<height>0</height>
+		<heightmode>1</heightmode>
+		<prevwidth>400</prevwidth>
+		<script2cond>1</script2cond>
+		<script2id>161</script2id>
+		<script2name>ff_showsubmitted</script2name>
+		<piece1cond>1</piece1cond>
+		<piece1id>99</piece1id>
+		<piece1name>ff_InitLib</piece1name>
+		<piece3cond>2</piece3cond>
+		<piece3code>// load the standard FacileForms library\r\n$this-\x3EexecPieceByName(\x27ff_InitLib\x27)\x3B\r\n\r\n// check attempt to post with invalid security code\r\nif (ff_getSubmit(\x27seccode\x27) != $_SESSION[\x27ff_seccode\x27]) {\r\n    $this-\x3Estatus = 1000\x3B // our custom error code\r\n    $this-\x3Emessage = \x22C\x26oacute\x3Bdigo de seguridad incorrecto.\x22\x3B\r\n} // if</piece3code>
+		<element id="1">
+			<published>0</published>
+			<name>label_titulo</name>
+			<title>etiqueta titulo</title>
+			<posx>10</posx>
+			<posy>0</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>QuÃƒÂƒÃ‚Â© necesita</data1>
+		</element>
+		<element id="2">
+			<name>label_nombre</name>
+			<title>etiqueta nombre</title>
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Nombre:</data1>
+		</element>
+		<element id="3">
+			<name>nombre</name>
+			<title>texto nombre</title>
+			<type>Text</type>
+			<class2>inputbox</class2>
+			<posx>0</posx>
+			<posy>15</posy>
+			<width>26</width>
+			<height>100</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script3cond>1</script3cond>
+			<script3id>173</script3id>
+			<script3name>ff_valuenotempty</script3name>
+			<script3msg>Debe introducir un nombre</script3msg>
+		</element>
+		<element id="4">
+			<name>label_telefono</name>
+			<title>etiqueta telefono</title>
+			<posx>0</posx>
+			<posy>40</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Tel\x26eacute\x3Bfono:</data1>
+		</element>
+		<element id="5">
+			<name>telefono</name>
+			<title>texto telefono</title>
+			<type>Text</type>
+			<class2>inputbox</class2>
+			<posx>0</posx>
+			<posy>55</posy>
+			<width>26</width>
+			<height>22</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+		<element id="6">
+			<name>label_mail</name>
+			<title>etiqueta mail</title>
+			<posx>0</posx>
+			<posy>80</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>E-Mail:</data1>
+		</element>
+		<element id="7">
+			<name>mail</name>
+			<title>texto mail</title>
+			<type>Text</type>
+			<class2>inputbox</class2>
+			<posx>0</posx>
+			<posy>95</posy>
+			<width>26</width>
+			<height>100</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script3cond>1</script3cond>
+			<script3id>171</script3id>
+			<script3name>ff_validemail</script3name>
+			<script3msg>Debe introducir una direccion de E-Mail valida</script3msg>
+		</element>
+		<element id="8">
+			<name>label_observaciones</name>
+			<title>etiqueta observaciones</title>
+			<posx>0</posx>
+			<posy>120</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Comentarios:</data1>
+		</element>
+		<element id="9">
+			<name>observaciones</name>
+			<title>texto observaciones</title>
+			<type>Textarea</type>
+			<class2>inputbox</class2>
+			<posx>0</posx>
+			<posy>135</posy>
+			<width>21</width>
+			<height>6</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+		<element id="10">
+			<name>seccode</name>
+			<title>Security Code</title>
+			<type>Text</type>
+			<class2>inputbox</class2>
+			<posx>0</posx>
+			<posy>272</posy>
+			<width>5</width>
+			<height>5</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script3cond>1</script3cond>
+			<script3id>154</script3id>
+			<script3name>ff_securitycode_ok</script3name>
+			<script3msg>Codigo de seguridad incorrecto</script3msg>
+		</element>
+		<element id="11">
+			<name>secimage</name>
+			<title>Security Image</title>
+			<posx>0</posx>
+			<posy>234</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>\x3C?php return ff_securityImage()\x3B ?\x3E</data1>
+		</element>
+		<element id="12">
+			<name>seclabel</name>
+			<title>Security Label</title>
+			<posx>0</posx>
+			<posy>255</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Introduzca los n\x26uacute\x3Bmeros:</data1>
+		</element>
+		<element id="13">
+			<name>botonenviar</name>
+			<title>boton enviar</title>
+			<type>Regular Button</type>
+			<class2>button</class2>
+			<posx>0</posx>
+			<posy>300</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data2>Enviar</data2>
+			<script2cond>1</script2cond>
+			<script2id>170</script2id>
+			<script2name>ff_validate_submit</script2name>
+			<script2flag1>1</script2flag1>
+		</element>
+	</form>
+	<form id="2">
+		<package>Formularios</package>
+		<name>contacto</name>
+		<title>Contacto</title>
+		<class1>content_outline</class1>
+		<width>100</width>
+		<widthmode>1</widthmode>
+		<height>0</height>
+		<heightmode>1</heightmode>
+		<pages>2</pages>
+		<prevwidth>700</prevwidth>
+		<script2cond>2</script2cond>
+		<script2code>function ff_contacto_submitted(status\x2C message) { \r\n\r\n   switch (status) {\r\n       case FF_STATUS_OK:\r\n          ff_switchpage(2)\x3B\r\n          break\x3B\r\n       case FF_STATUS_UNPUBLISHED:\r\n       case FF_STATUS_SAVERECORD_FAILED:\r\n       case FF_STATUS_SAVESUBRECORD_FAILED:\r\n       case FF_STATUS_UPLOAD_FAILED:\r\n       case FF_STATUS_ATTACHMENT_FAILED:\r\n       case FF_STATUS_SENDMAIL_FAILED:\r\n       default:\r\n          alert(message)\x3B\r\n   } // switch\r\n} // ff_contacto_submitted</script2code>
+		<piece1cond>1</piece1cond>
+		<piece1id>99</piece1id>
+		<piece1name>ff_InitLib</piece1name>
+		<piece3cond>2</piece3cond>
+		<element id="14">
+			<name>Cabecera</name>
+			<title>Cabecera</title>
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>\x3Cp class=\x22ja-typo-box box-information\x22\x3EPara solicitar informaci\x26oacute\x3Bn\x2C rellene el siguiente formulario. Si lo prefiere\x2C tambi\x26eacute\x3Bn puede ponerse en contacto con nosotros\x26nbsp\x3B a trav\x26eacute\x3Bs del tel\x26eacute\x3Bfono o envi\x26aacute\x3Bndonos un E-Mail.\x3C/p\x3E</data1>
+		</element>
+		<element id="15">
+			<name>label_titulo</name>
+			<title>etiqueta titulo</title>
+			<posx>0</posx>
+			<posy>115</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>\x3Cdiv style=\x22border:1px solid #CCC\x3B padding:10px\x3B\x22\x3E\r\n\x3Cb\x3ENombre Empresa\x3C/b\x3E\x3Cbr /\x3E\r\nC/ XXXX XXXXXX\x2C XX\x3Cbr /\x3E\r\n00000 XXXXXXX\x3Cbr /\x3E\r\nTel./Fax: 111 11 11 1\x3Cbr /\x3E\r\nE-Mail: XXXX@XXXX.XXX\r\n\x3C/div\x3E</data1>
+		</element>
+		<element id="17">
+			<name>label_persona</name>
+			<title>etiqueta persona</title>
+			<posx>330</posx>
+			<posy>115</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Persona contacto:</data1>
+		</element>
+		<element id="18">
+			<name>Persona</name>
+			<title>Persona</title>
+			<type>Text</type>
+			<class2>inputbox</class2>
+			<posx>455</posx>
+			<posy>115</posy>
+			<width>30</width>
+			<height>100</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script3cond>1</script3cond>
+			<script3id>173</script3id>
+			<script3name>ff_valuenotempty</script3name>
+			<script3msg>Debe introducir el nombre de la persona de contacto</script3msg>
+		</element>
+		<element id="19">
+			<name>label_poblacion</name>
+			<title>etiqueta poblacion</title>
+			<posx>330</posx>
+			<posy>145</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Poblaci\x26oacute\x3Bn:</data1>
+		</element>
+		<element id="20">
+			<name>poblacion</name>
+			<title>Poblacion</title>
+			<type>Text</type>
+			<class2>inputbox</class2>
+			<posx>455</posx>
+			<posy>145</posy>
+			<width>30</width>
+			<height>100</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+		<element id="21">
+			<name>label_telefono</name>
+			<title>etiqueta telefono</title>
+			<posx>330</posx>
+			<posy>175</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Tel\x26eacute\x3Bfono:</data1>
+		</element>
+		<element id="22">
+			<name>Telefono</name>
+			<title>Telefono</title>
+			<type>Text</type>
+			<class2>inputbox</class2>
+			<posx>455</posx>
+			<posy>175</posy>
+			<width>30</width>
+			<height>30</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script3cond>1</script3cond>
+			<script3id>173</script3id>
+			<script3name>ff_valuenotempty</script3name>
+			<script3msg>Debe introducir un numero de telefono</script3msg>
+		</element>
+		<element id="23">
+			<name>label_mail</name>
+			<title>etiqueta mail</title>
+			<posx>330</posx>
+			<posy>205</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>E-Mail:</data1>
+		</element>
+		<element id="24">
+			<name>Mail</name>
+			<title>Mail</title>
+			<type>Text</type>
+			<class2>inputbox</class2>
+			<posx>455</posx>
+			<posy>205</posy>
+			<width>30</width>
+			<height>100</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script3cond>1</script3cond>
+			<script3id>171</script3id>
+			<script3name>ff_validemail</script3name>
+			<script3msg>Debe introducir un direccion de E-Mail valida</script3msg>
+		</element>
+		<element id="25">
+			<name>label_observaciones</name>
+			<title>etiqueta observaciones</title>
+			<posx>330</posx>
+			<posy>235</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Observaciones:</data1>
+		</element>
+		<element id="26">
+			<name>observaciones</name>
+			<title>Observaciones</title>
+			<type>Textarea</type>
+			<class2>inputbox</class2>
+			<posx>455</posx>
+			<posy>235</posy>
+			<width>465</width>
+			<widthmode>1</widthmode>
+			<height>6</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+		<element id="27">
+			<name>Privacidad</name>
+			<title>Privacidad</title>
+			<type>Checkbox</type>
+			<posx>455</posx>
+			<posy>350</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Si</data1>
+			<data2>He le\x26iacute\x3Bdo y acepto la \x3Ca href=\x22javascript:void(0)\x3B\x22 onclick=\x22window.open(\x27index.php?option=com_content\x26view=article\x26id=70\x26Itemid=570\x26tmpl=component\x27\x2C\x27Privacidad\x27\x2C\x27scrollbars=yes\x2Cwidth=400\x2Cheight=400\x27)\x22\x3E\x3Cb\x3E\x3Cu\x3EPol\x26iacute\x3B­tica de privacidad\x3C/u\x3E\x3C/b\x3E\x3C/a\x3E</data2>
+			<script3cond>1</script3cond>
+			<script3id>131</script3id>
+			<script3name>ff_checked</script3name>
+			<script3msg>Debe aceptar la poli­tica de privacidad</script3msg>
+		</element>
+		<element id="30">
+			<name>seclabel</name>
+			<title>Security Label</title>
+			<posx>455</posx>
+			<posy>375</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>Introduzca los caracteres de la imagen:</data1>
+		</element>
+		<element id="33">
+			<name>captcha</name>
+			<title>captcha</title>
+			<type>Captcha</type>
+			<posx>455</posx>
+			<posy>395</posy>
+			<width>0</width>
+			<widthmode>1</widthmode>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+		<element id="31">
+			<name>botonenviar</name>
+			<title>boton enviar</title>
+			<type>Regular Button</type>
+			<class2>button</class2>
+			<posx>455</posx>
+			<posy>495</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data2>Enviar</data2>
+			<script2cond>1</script2cond>
+			<script2id>170</script2id>
+			<script2name>ff_validate_submit</script2name>
+			<script2flag1>1</script2flag1>
+		</element>
+		<element id="34">
+			<name>mapa</name>
+			<title>Mapa</title>
+			<posx>0</posx>
+			<posy>280</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>\x3Ciframe style=\x22border:1px solid #CCC\x3B\x22 width=\x22390\x22 height=\x22220\x22 frameborder=\x220\x22 scrolling=\x22no\x22 marginheight=\x220\x22 marginwidth=\x220\x22 src=\x22http://maps.google.com/maps?f=q\x26amp\x3Bsource=s_q\x26amp\x3Bhl=es\x26amp\x3Bgeocode=\x26amp\x3Bq=quinta+avenida\x2C+nueva+york\x26amp\x3Baq=\x26amp\x3Bsll=40.761107\x2C-73.97451\x26amp\x3Bsspn=0.17059\x2C0.52803\x26amp\x3Bie=UTF8\x26amp\x3Bhq=\x26amp\x3Bhnear=5th+Ave\x2C+New+York\x26amp\x3Bz=13\x26amp\x3Bll=40.781499\x2C-73.960414\x26amp\x3Boutput=embed\x22\x3E\x3C/iframe\x3E\x3Cbr /\x3E\x3Csmall\x3E\x3Ca href=\x22http://maps.google.com/maps?f=q\x26amp\x3Bsource=embed\x26amp\x3Bhl=es\x26amp\x3Bgeocode=\x26amp\x3Bq=quinta+avenida\x2C+nueva+york\x26amp\x3Baq=\x26amp\x3Bsll=40.761107\x2C-73.97451\x26amp\x3Bsspn=0.17059\x2C0.52803\x26amp\x3Bie=UTF8\x26amp\x3Bhq=\x26amp\x3Bhnear=5th+Ave\x2C+New+York\x26amp\x3Bz=13\x26amp\x3Bll=40.781499\x2C-73.960414\x22 style=\x22color:#0000FF\x3Btext-align:left\x22 target=\x22_blank\x22\x3EVer mapa más grande\x3C/a\x3E\x3C/small\x3E</data1>
+		</element>
+		<element id="32">
+			<page>2</page>
+			<name>label_final</name>
+			<title>etiqueta final</title>
+			<posx>60</posx>
+			<posy>20</posy>
+			<width>0</width>
+			<height>0</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>\x3Cbr/\x3E\x3Cbr/\x3E\r\n\x3Cdiv align=\x22center\x22\x3E\r\n\x3Cb\x3EGracias por ponerse en contacto con nosotros.\x3C/b\x3E\r\n\x3C/div\x3E\r\n\x3Cbr/\x3E\x3Cbr/\x3E</data1>
+		</element>
+	</form>
+	<form id="3">
+		<package>QuickModeForms</package>
+		<name>contacto2</name>
+		<title>Contacto2</title>
+		<width>400</width>
+		<height>500</height>
+		<pages>2</pages>
+		<emailntf>0</emailntf>
+		<template_code>ZXlKaGRIUnlhV0oxZEdWeklqcDdJbU5zWVhOeklqb2lZbVpSZFdsamEwMXZaR1ZTYjI5MFEyeGhjM01pTENKcFpDSTZJbUptVVhWcFkydE5iMlJsVW05dmRDSXNJbTFrWVhSaElqb2llMXdpZEhsd1pWd2lPaUJjSW5KdmIzUmNJbjBpZlN3aWNISnZjR1Z5ZEdsbGN5STZleUowZVhCbElqb2ljbTl2ZENJc0luUnBkR3hsSWpvaVEyOXVkR0ZqZEc4eUlpd2libUZ0WlNJNkltTnZiblJoWTNSdk1pSXNJbkp2Ykd4dmRtVnlJanAwY25WbExDSnliMnhzYjNabGNrTnZiRzl5SWpvaUkyWm1ZeUlzSW5SdloyZHNaVVpwWld4a2N5STZJaUlzSW1SbGMyTnlhWEIwYVc5dUlqb2lJaXdpYldGcGJFNXZkR2xtYVdOaGRHbHZiaUk2Wm1Gc2MyVXNJbTFoYVd4U1pXTnBjR2xsYm5RaU9pSWlMQ0p6ZFdKdGFYUkpibU5zZFdSbElqcDBjblZsTENKemRXSnRhWFJNWVdKbGJDSTZJa1Z1ZG1saGNpSXNJbU5oYm1ObGJFbHVZMngxWkdVaU9tWmhiSE5sTENKallXNWpaV3hNWVdKbGJDSTZJbkpsYzJWMElpd2ljR0ZuYVc1blNXNWpiSFZrWlNJNmRISjFaU3dpY0dGbmFXNW5UbVY0ZEV4aFltVnNJam9pYm1WNGRDSXNJbkJoWjJsdVoxQnlaWFpNWVdKbGJDSTZJbUpoWTJzaUxDSjBhR1Z0WlNJNkltUmxabUYxYkhRaUxDSm1ZV1JsU1c0aU9tWmhiSE5sTENKc1lYTjBVR0ZuWlZSb1lXNXJXVzkxSWpwMGNuVmxMQ0p6ZFdKdGFYUjBaV1JUWTNKcGNIUkRiMjVrYVdSMGFXOXVJam95TENKemRXSnRhWFIwWldSVFkzSnBjSFJEYjJSbElqb2lablZ1WTNScGIyNGdabVpmWTI5dWRHRmpkRzh5WDNOMVltMXBkSFJsWkNoemRHRjBkWE1zSUcxbGMzTmhaMlVwZTJsbUtITjBZWFIxY3owOU1DbDdabVpmYzNkcGRHTm9jR0ZuWlNneUtUdDlaV3h6Wlh0aGJHVnlkQ2h0WlhOellXZGxLVHQ5ZlNJc0luVnpaVVZ5Y205eVFXeGxjblJ6SWpwbVlXeHpaU3dpZFhObFJHVm1ZWFZzZEVWeWNtOXljeUk2ZEhKMVpTd2lkWE5sUW1Gc2JHOXZia1Z5Y205eWN5STZabUZzYzJVc0ltUnBjMkZpYkdWS1VYVmxjbmtpT21aaGJITmxMQ0pxYjI5dGJHRklhVzUwSWpwbVlXeHpaU3dpYlc5aWFXeGxSVzVoWW14bFpDSTZkSEoxWlN3aVptOXlZMlZOYjJKcGJHVWlPbVpoYkhObExDSm1iM0pqWlUxdlltbHNaVlZ5YkNJNkltbHVaR1Y0TG5Cb2NDSjlMQ0p6ZEdGMFpTSTZJbTl3Wlc0aUxDSmtZWFJoSWpwN0luUnBkR3hsSWpvaVEyOXVkR0ZqZEc4eUlpd2lhV052YmlJNklpNHVYQzloWkcxcGJtbHpkSEpoZEc5eVhDOWpiMjF3YjI1bGJuUnpYQzlqYjIxZlluSmxaWHBwYm1kbWIzSnRjMXd2YkdsaWNtRnlhV1Z6WEM5cWNYVmxjbmxjTDNSb1pXMWxjMXd2Y1hWcFkydHRiMlJsWEM5cFhDOXBZMjl1WDJadmNtMHVjRzVuSW4wc0ltTm9hV3hrY21WdUlqcGJleUpoZEhSeWFXSjFkR1Z6SWpwN0ltTnNZWE56SWpvaVltWlJkV2xqYTAxdlpHVlFZV2RsUTJ4aGMzTWlMQ0pwWkNJNkltSm1VWFZwWTJ0TmIyUmxVR0ZuWlRFaUxDSnRaR0YwWVNJNkludGNJbVJsYkdWMFlXSnNaVndpT2lCMGNuVmxMQ0JjSW5SNWNHVmNJam9nWENKd1lXZGxYQ0o5SW4wc0luQnliM0JsY25ScFpYTWlPbnNpZEhsd1pTSTZJbkJoWjJVaUxDSndZV2RsVG5WdFltVnlJam94TENKd1lXZGxTVzUwY204aU9pSThjQ0JqYkdGemN6MWNJbXBoTFhSNWNHOHRZbTk0SUdKdmVDMXBibVp2Y20xaGRHbHZibHdpUGxCaGNtRWdjMjlzYVdOcGRHRnlJR2x1Wm05eWJXRmphVngxTURCbU0yNHNJSEpsYkd4bGJtVWdaV3dnYzJsbmRXbGxiblJsSUdadmNtMTFiR0Z5YVc4dUlGTnBJR3h2SUhCeVpXWnBaWEpsTENCMFlXMWlhVngxTURCbE9XNGdjSFZsWkdVZ2NHOXVaWEp6WlNCbGJpQmpiMjUwWVdOMGJ5QmpiMjRnYm05emIzUnliM01tYm1KemNEc2dZU0IwY21GMlhIVXdNR1U1Y3lCa1pXd2dkR1ZzWEhVd01HVTVabTl1YnlCdklHVnVkbWxjZFRBd1pURnVaRzl1YjNNZ2RXNGdSUzFOWVdsc0xqeGNMM0ErSW4wc0luTjBZWFJsSWpvaWIzQmxiaUlzSW1SaGRHRWlPbnNpZEdsMGJHVWlPaUpRWVdkbElERWlMQ0pwWTI5dUlqb2lMaTVjTDJGa2JXbHVhWE4wY21GMGIzSmNMMk52YlhCdmJtVnVkSE5jTDJOdmJWOWljbVZsZW1sdVoyWnZjbTF6WEM5c2FXSnlZWEpwWlhOY0wycHhkV1Z5ZVZ3dmRHaGxiV1Z6WEM5eGRXbGphMjF2WkdWY0wybGNMMmxqYjI1ZmNHRm5aUzV3Ym1jaWZTd2lZMmhwYkdSeVpXNGlPbHQ3SW1GMGRISnBZblYwWlhNaU9uc2lZMnhoYzNNaU9pSmlabEYxYVdOclRXOWtaVVZzWlcxbGJuUkRiR0Z6Y3lJc0ltbGtJam9pWW1aUmRXbGphMDF2WkdVeE16WXhOVGd5SWl3aWJXUmhkR0VpT2lKN1hDSmtaV3hsZEdGaWJHVmNJam9nZEhKMVpTd2dYQ0owZVhCbFhDSTZJRndpWld4bGJXVnVkRndpZlNKOUxDSmtZWFJoSWpwN0luUnBkR3hsSWpvaVVHVnljMjl1WVNCa1pTQmpiMjUwWVdOMGJ5SXNJbWxqYjI0aU9pSXVMbHd2WVdSdGFXNXBjM1J5WVhSdmNsd3ZZMjl0Y0c5dVpXNTBjMXd2WTI5dFgySnlaV1Y2YVc1blptOXliWE5jTDJ4cFluSmhjbWxsYzF3dmFuRjFaWEo1WEM5MGFHVnRaWE5jTDNGMWFXTnJiVzlrWlZ3dmFWd3ZhV052Ymw5MFpYaDBMV1pwWld4a0xuQnVaeUo5TENKd2NtOXdaWEowYVdWeklqcDdJblI1Y0dVaU9pSmxiR1Z0Wlc1MElpd2lZbVpVZVhCbElqb2lZbVpVWlhoMFptbGxiR1FpTENKc1lXSmxiQ0k2SWxCbGNuTnZibUVnWkdVZ1kyOXVkR0ZqZEc4aUxDSnNZV0psYkZCdmMybDBhVzl1SWpvaWJHVm1kQ0lzSW1KbVRtRnRaU0k2SWs1dmJXSnlaU0lzSW1SaVNXUWlPalEyTENKdmNtUmxjazUxYldKbGNpSTZJaTB4SWl3aWRHRmlTVzVrWlhnaU9pSXRNU0lzSW14dloyZHBibWNpT25SeWRXVXNJbWhwWkdWTVlXSmxiQ0k2Wm1Gc2MyVXNJbkpsY1hWcGNtVmtJanAwY25WbExDSm9hVzUwSWpvaUlpd2liMlptSWpwbVlXeHpaU3dpZG1Gc2RXVWlPaUlpTENKdFlYaE1aVzVuZEdnaU9pSWlMQ0p5WldGa2IyNXNlU0k2Wm1Gc2MyVXNJbkJoYzNOM2IzSmtJanBtWVd4elpTd2liV0ZwYkdKaFkyc2lPbVpoYkhObExDSnRZV2xzWW1GamEwRnpVMlZ1WkdWeUlqcG1ZV3h6WlN3aWJXRnBiR0poWTJ0bWFXeGxJam9pSWl3aWMybDZaU0k2SWlJc0luWmhiR2xrWVhScGIyNURiMjVrYVhScGIyNGlPakVzSW5aaGJHbGtZWFJwYjI1SlpDSTZJakUzTXlJc0luWmhiR2xrWVhScGIyNURiMlJsSWpvaUlpd2lkbUZzYVdSaGRHbHZiazFsYzNOaFoyVWlPaUpFWldKbElHbHVkSEp2WkhWamFYSWdkVzRnYm05dFluSmxJaXdpZG1Gc2FXUmhkR2x2YmtaMWJtTjBhVzl1VG1GdFpTSTZJbVptWDNaaGJIVmxibTkwWlcxd2RIa2lMQ0pwYm1sMFEyOXVaR2wwYVc5dUlqb3dMQ0pwYm1sMFNXUWlPakFzSW1sdWFYUkRiMlJsSWpvaUlpd2lhVzVwZEVaMWJtTjBhVzl1VG1GdFpTSTZJaUlzSW1sdWFYUkdiM0p0Ulc1MGNua2lPakFzSW1sdWFYUlFZV2RsUlc1MGNua2lPakFzSW1GamRHbHZia052Ym1ScGRHbHZiaUk2TUN3aVlXTjBhVzl1U1dRaU9qQXNJbUZqZEdsdmJrTnZaR1VpT2lJaUxDSmhZM1JwYjI1R2RXNWpkR2x2Yms1aGJXVWlPaUlpTENKaFkzUnBiMjVEYkdsamF5STZNQ3dpWVdOMGFXOXVRbXgxY2lJNk1Dd2lZV04wYVc5dVEyaGhibWRsSWpvd0xDSmhZM1JwYjI1R2IyTjFjeUk2TUN3aVlXTjBhVzl1VTJWc1pXTjBJam93TENKb2FXUmxTVzVOWVdsc1ltRmpheUk2Wm1Gc2MyVXNJbWx1YVhSVFkzSnBjSFFpT2lJaWZYMHNleUpoZEhSeWFXSjFkR1Z6SWpwN0ltTnNZWE56SWpvaVltWlJkV2xqYTAxdlpHVkZiR1Z0Wlc1MFEyeGhjM01pTENKcFpDSTZJbUptVVhWcFkydE5iMlJsT0RreE1qSTNNaUlzSW0xa1lYUmhJam9pZTF3aVpHVnNaWFJoWW14bFhDSTZJSFJ5ZFdVc0lGd2lkSGx3WlZ3aU9pQmNJbVZzWlcxbGJuUmNJbjBpZlN3aVpHRjBZU0k2ZXlKMGFYUnNaU0k2SWxCdllteGhZMmxjZFRBd1pqTnVJaXdpYVdOdmJpSTZJaTR1WEM5aFpHMXBibWx6ZEhKaGRHOXlYQzlqYjIxd2IyNWxiblJ6WEM5amIyMWZZbkpsWlhwcGJtZG1iM0p0YzF3dmJHbGljbUZ5YVdWelhDOXFjWFZsY25sY0wzUm9aVzFsYzF3dmNYVnBZMnR0YjJSbFhDOXBYQzlwWTI5dVgzUmxlSFF0Wm1sbGJHUXVjRzVuSW4wc0luQnliM0JsY25ScFpYTWlPbnNpZEhsd1pTSTZJbVZzWlcxbGJuUWlMQ0ppWmxSNWNHVWlPaUppWmxSbGVIUm1hV1ZzWkNJc0lteGhZbVZzSWpvaVVHOWliR0ZqYVZ4MU1EQm1NMjRpTENKc1lXSmxiRkJ2YzJsMGFXOXVJam9pYkdWbWRDSXNJbUptVG1GdFpTSTZJbEJ2WW14aFkybHZiaUlzSW1SaVNXUWlPalEzTENKdmNtUmxjazUxYldKbGNpSTZJaTB4SWl3aWRHRmlTVzVrWlhnaU9pSXRNU0lzSW14dloyZHBibWNpT25SeWRXVXNJbWhwWkdWTVlXSmxiQ0k2Wm1Gc2MyVXNJbkpsY1hWcGNtVmtJanBtWVd4elpTd2lhR2x1ZENJNklpSXNJbTltWmlJNlptRnNjMlVzSW5aaGJIVmxJam9pSWl3aWJXRjRUR1Z1WjNSb0lqb2lJaXdpY21WaFpHOXViSGtpT21aaGJITmxMQ0p3WVhOemQyOXlaQ0k2Wm1Gc2MyVXNJbTFoYVd4aVlXTnJJanBtWVd4elpTd2liV0ZwYkdKaFkydEJjMU5sYm1SbGNpSTZabUZzYzJVc0ltMWhhV3hpWVdOclptbHNaU0k2SWlJc0luTnBlbVVpT2lJaUxDSjJZV3hwWkdGMGFXOXVRMjl1WkdsMGFXOXVJam93TENKMllXeHBaR0YwYVc5dVNXUWlPakFzSW5aaGJHbGtZWFJwYjI1RGIyUmxJam9pSWl3aWRtRnNhV1JoZEdsdmJrMWxjM05oWjJVaU9pSWlMQ0oyWVd4cFpHRjBhVzl1Um5WdVkzUnBiMjVPWVcxbElqb2lJaXdpYVc1cGRFTnZibVJwZEdsdmJpSTZNQ3dpYVc1cGRFbGtJam93TENKcGJtbDBRMjlrWlNJNklpSXNJbWx1YVhSR2RXNWpkR2x2Yms1aGJXVWlPaUlpTENKcGJtbDBSbTl5YlVWdWRISjVJam93TENKcGJtbDBVR0ZuWlVWdWRISjVJam93TENKaFkzUnBiMjVEYjI1a2FYUnBiMjRpT2pBc0ltRmpkR2x2Ymtsa0lqb3dMQ0poWTNScGIyNURiMlJsSWpvaUlpd2lZV04wYVc5dVJuVnVZM1JwYjI1T1lXMWxJam9pSWl3aVlXTjBhVzl1UTJ4cFkyc2lPakFzSW1GamRHbHZia0pzZFhJaU9qQXNJbUZqZEdsdmJrTm9ZVzVuWlNJNk1Dd2lZV04wYVc5dVJtOWpkWE1pT2pBc0ltRmpkR2x2YmxObGJHVmpkQ0k2TUN3aWFHbGtaVWx1VFdGcGJHSmhZMnNpT21aaGJITmxMQ0pwYm1sMFUyTnlhWEIwSWpvaUluMTlMSHNpWVhSMGNtbGlkWFJsY3lJNmV5SmpiR0Z6Y3lJNkltSm1VWFZwWTJ0TmIyUmxSV3hsYldWdWRFTnNZWE56SWl3aWFXUWlPaUppWmxGMWFXTnJUVzlrWlRReU16Z3dOeklpTENKdFpHRjBZU0k2SW50Y0ltUmxiR1YwWVdKc1pWd2lPaUIwY25WbExDQmNJblI1Y0dWY0lqb2dYQ0psYkdWdFpXNTBYQ0o5SW4wc0ltUmhkR0VpT25zaWRHbDBiR1VpT2lKVVpXeGNkVEF3WlRsbWIyNXZJaXdpYVdOdmJpSTZJaTR1WEM5aFpHMXBibWx6ZEhKaGRHOXlYQzlqYjIxd2IyNWxiblJ6WEM5amIyMWZZbkpsWlhwcGJtZG1iM0p0YzF3dmJHbGljbUZ5YVdWelhDOXFjWFZsY25sY0wzUm9aVzFsYzF3dmNYVnBZMnR0YjJSbFhDOXBYQzlwWTI5dVgzUmxlSFF0Wm1sbGJHUXVjRzVuSW4wc0luQnliM0JsY25ScFpYTWlPbnNpZEhsd1pTSTZJbVZzWlcxbGJuUWlMQ0ppWmxSNWNHVWlPaUppWmxSbGVIUm1hV1ZzWkNJc0lteGhZbVZzSWpvaVZHVnNYSFV3TUdVNVptOXVieUlzSW14aFltVnNVRzl6YVhScGIyNGlPaUpzWldaMElpd2lZbVpPWVcxbElqb2lWR1ZzWldadmJtOGlMQ0prWWtsa0lqbzBPQ3dpYjNKa1pYSk9kVzFpWlhJaU9pSXRNU0lzSW5SaFlrbHVaR1Y0SWpvaUxURWlMQ0pzYjJkbmFXNW5JanAwY25WbExDSm9hV1JsVEdGaVpXd2lPbVpoYkhObExDSnlaWEYxYVhKbFpDSTZabUZzYzJVc0ltaHBiblFpT2lJaUxDSnZabVlpT21aaGJITmxMQ0oyWVd4MVpTSTZJaUlzSW0xaGVFeGxibWQwYUNJNklpSXNJbkpsWVdSdmJteDVJanBtWVd4elpTd2ljR0Z6YzNkdmNtUWlPbVpoYkhObExDSnRZV2xzWW1GamF5STZabUZzYzJVc0ltMWhhV3hpWVdOclFYTlRaVzVrWlhJaU9tWmhiSE5sTENKdFlXbHNZbUZqYTJacGJHVWlPaUlpTENKemFYcGxJam9pSWl3aWRtRnNhV1JoZEdsdmJrTnZibVJwZEdsdmJpSTZNQ3dpZG1Gc2FXUmhkR2x2Ymtsa0lqb3dMQ0oyWVd4cFpHRjBhVzl1UTI5a1pTSTZJaUlzSW5aaGJHbGtZWFJwYjI1TlpYTnpZV2RsSWpvaUlpd2lkbUZzYVdSaGRHbHZia1oxYm1OMGFXOXVUbUZ0WlNJNklpSXNJbWx1YVhSRGIyNWthWFJwYjI0aU9qQXNJbWx1YVhSSlpDSTZNQ3dpYVc1cGRFTnZaR1VpT2lJaUxDSnBibWwwUm5WdVkzUnBiMjVPWVcxbElqb2lJaXdpYVc1cGRFWnZjbTFGYm5SeWVTSTZNQ3dpYVc1cGRGQmhaMlZGYm5SeWVTSTZNQ3dpWVdOMGFXOXVRMjl1WkdsMGFXOXVJam93TENKaFkzUnBiMjVKWkNJNk1Dd2lZV04wYVc5dVEyOWtaU0k2SWlJc0ltRmpkR2x2YmtaMWJtTjBhVzl1VG1GdFpTSTZJaUlzSW1GamRHbHZia05zYVdOcklqb3dMQ0poWTNScGIyNUNiSFZ5SWpvd0xDSmhZM1JwYjI1RGFHRnVaMlVpT2pBc0ltRmpkR2x2YmtadlkzVnpJam93TENKaFkzUnBiMjVUWld4bFkzUWlPakFzSW1ocFpHVkpiazFoYVd4aVlXTnJJanBtWVd4elpTd2lhVzVwZEZOamNtbHdkQ0k2SWlKOWZTeDdJbUYwZEhKcFluVjBaWE1pT25zaVkyeGhjM01pT2lKaVpsRjFhV05yVFc5a1pVVnNaVzFsYm5SRGJHRnpjeUlzSW1sa0lqb2lZbVpSZFdsamEwMXZaR1UzTXpjNE9UQXpJaXdpYldSaGRHRWlPaUo3WENKa1pXeGxkR0ZpYkdWY0lqb2dkSEoxWlN3Z1hDSjBlWEJsWENJNklGd2laV3hsYldWdWRGd2lmU0o5TENKa1lYUmhJanA3SW5ScGRHeGxJam9pUlMxTllXbHNJaXdpYVdOdmJpSTZJaTR1WEM5aFpHMXBibWx6ZEhKaGRHOXlYQzlqYjIxd2IyNWxiblJ6WEM5amIyMWZZbkpsWlhwcGJtZG1iM0p0YzF3dmJHbGljbUZ5YVdWelhDOXFjWFZsY25sY0wzUm9aVzFsYzF3dmNYVnBZMnR0YjJSbFhDOXBYQzlwWTI5dVgzUmxlSFF0Wm1sbGJHUXVjRzVuSW4wc0luQnliM0JsY25ScFpYTWlPbnNpZEhsd1pTSTZJbVZzWlcxbGJuUWlMQ0ppWmxSNWNHVWlPaUppWmxSbGVIUm1hV1ZzWkNJc0lteGhZbVZzSWpvaVJTMU5ZV2xzSWl3aWJHRmlaV3hRYjNOcGRHbHZiaUk2SW14bFpuUWlMQ0ppWms1aGJXVWlPaUpGYldGcGJDSXNJbVJpU1dRaU9qUTVMQ0p2Y21SbGNrNTFiV0psY2lJNklpMHhJaXdpZEdGaVNXNWtaWGdpT2lJdE1TSXNJbXh2WjJkcGJtY2lPblJ5ZFdVc0ltaHBaR1ZNWVdKbGJDSTZabUZzYzJVc0luSmxjWFZwY21Wa0lqcDBjblZsTENKb2FXNTBJam9pSWl3aWIyWm1JanBtWVd4elpTd2lkbUZzZFdVaU9pSWlMQ0p0WVhoTVpXNW5kR2dpT2lJaUxDSnlaV0ZrYjI1c2VTSTZabUZzYzJVc0luQmhjM04zYjNKa0lqcG1ZV3h6WlN3aWJXRnBiR0poWTJzaU9tWmhiSE5sTENKdFlXbHNZbUZqYTBGelUyVnVaR1Z5SWpwbVlXeHpaU3dpYldGcGJHSmhZMnRtYVd4bElqb2lJaXdpYzJsNlpTSTZJaUlzSW5aaGJHbGtZWFJwYjI1RGIyNWthWFJwYjI0aU9qRXNJblpoYkdsa1lYUnBiMjVKWkNJNklqRTNNU0lzSW5aaGJHbGtZWFJwYjI1RGIyUmxJam9pSWl3aWRtRnNhV1JoZEdsdmJrMWxjM05oWjJVaU9pSkVaV0psSUdsdWRISnZaSFZqYVhJZ2RXNWhJR1JwY21WalkybGNkVEF3WmpOdUlHUmxJRVZ0WVdsc0lIWmNkVEF3WlRGc2FXUmhJaXdpZG1Gc2FXUmhkR2x2YmtaMWJtTjBhVzl1VG1GdFpTSTZJbVptWDNaaGJHbGtaVzFoYVd3aUxDSnBibWwwUTI5dVpHbDBhVzl1SWpvd0xDSnBibWwwU1dRaU9qQXNJbWx1YVhSRGIyUmxJam9pSWl3aWFXNXBkRVoxYm1OMGFXOXVUbUZ0WlNJNklpSXNJbWx1YVhSR2IzSnRSVzUwY25raU9qQXNJbWx1YVhSUVlXZGxSVzUwY25raU9qQXNJbUZqZEdsdmJrTnZibVJwZEdsdmJpSTZNQ3dpWVdOMGFXOXVTV1FpT2pBc0ltRmpkR2x2YmtOdlpHVWlPaUlpTENKaFkzUnBiMjVHZFc1amRHbHZiazVoYldVaU9pSWlMQ0poWTNScGIyNURiR2xqYXlJNk1Dd2lZV04wYVc5dVFteDFjaUk2TUN3aVlXTjBhVzl1UTJoaGJtZGxJam93TENKaFkzUnBiMjVHYjJOMWN5STZNQ3dpWVdOMGFXOXVVMlZzWldOMElqb3dMQ0pvYVdSbFNXNU5ZV2xzWW1GamF5STZabUZzYzJVc0ltbHVhWFJUWTNKcGNIUWlPaUlpZlgwc2V5SmhkSFJ5YVdKMWRHVnpJanA3SW1Oc1lYTnpJam9pWW1aUmRXbGphMDF2WkdWRmJHVnRaVzUwUTJ4aGMzTWlMQ0pwWkNJNkltSm1VWFZwWTJ0TmIyUmxOekk1TVRZNE1TSXNJbTFrWVhSaElqb2llMXdpWkdWc1pYUmhZbXhsWENJNklIUnlkV1VzSUZ3aWRIbHdaVndpT2lCY0ltVnNaVzFsYm5SY0luMGlmU3dpWkdGMFlTSTZleUowYVhSc1pTSTZJazlpYzJWeWRtRmphVzl1WlhNaUxDSnBZMjl1SWpvaUxpNWNMMkZrYldsdWFYTjBjbUYwYjNKY0wyTnZiWEJ2Ym1WdWRITmNMMk52YlY5aWNtVmxlbWx1WjJadmNtMXpYQzlzYVdKeVlYSnBaWE5jTDJweGRXVnllVnd2ZEdobGJXVnpYQzl4ZFdsamEyMXZaR1ZjTDJsY0wybGpiMjVmZEdWNGRDMWhjbVZoTG5CdVp5SjlMQ0p3Y205d1pYSjBhV1Z6SWpwN0luUjVjR1VpT2lKbGJHVnRaVzUwSWl3aVltWlVlWEJsSWpvaVltWlVaWGgwWVhKbFlTSXNJbXhoWW1Wc0lqb2lUMkp6WlhKMllXTnBiMjVsY3lJc0lteGhZbVZzVUc5emFYUnBiMjRpT2lKc1pXWjBJaXdpWW1aT1lXMWxJam9pVDJKelpYSjJZV05wYjI1bGN5SXNJbVJpU1dRaU9qVXdMQ0p2Y21SbGNrNTFiV0psY2lJNklpMHhJaXdpZEdGaVNXNWtaWGdpT2lJdE1TSXNJbXh2WjJkcGJtY2lPblJ5ZFdVc0ltaHBaR1ZNWVdKbGJDSTZabUZzYzJVc0luSmxjWFZwY21Wa0lqcG1ZV3h6WlN3aWFHbHVkQ0k2SWlJc0ltOW1aaUk2Wm1Gc2MyVXNJbWx6WDJoMGJXd2lPbVpoYkhObExDSjJZV3gxWlNJNklpSXNJbmRwWkhSb0lqb2lJaXdpYUdWcFoyaDBJam9pTlNJc0ltMWhlR3hsYm1kMGFDSTZJakFpTENKemFHOTNUV0Y0YkdWdVozUm9RMjkxYm5SbGNpSTZkSEoxWlN3aWNtVmhaRzl1YkhraU9tWmhiSE5sTENKMllXeHBaR0YwYVc5dVEyOXVaR2wwYVc5dUlqb3dMQ0oyWVd4cFpHRjBhVzl1U1dRaU9qQXNJblpoYkdsa1lYUnBiMjVEYjJSbElqb2lJaXdpZG1Gc2FXUmhkR2x2YmsxbGMzTmhaMlVpT2lJaUxDSjJZV3hwWkdGMGFXOXVSblZ1WTNScGIyNU9ZVzFsSWpvaUlpd2lhVzVwZEVOdmJtUnBkR2x2YmlJNk1Dd2lhVzVwZEVsa0lqb3dMQ0pwYm1sMFEyOWtaU0k2SWlJc0ltbHVhWFJHZFc1amRHbHZiazVoYldVaU9pSWlMQ0pwYm1sMFJtOXliVVZ1ZEhKNUlqb3dMQ0pwYm1sMFVHRm5aVVZ1ZEhKNUlqb3dMQ0poWTNScGIyNURiMjVrYVhScGIyNGlPakFzSW1GamRHbHZia2xrSWpvd0xDSmhZM1JwYjI1RGIyUmxJam9pSWl3aVlXTjBhVzl1Um5WdVkzUnBiMjVPWVcxbElqb2lJaXdpWVdOMGFXOXVRMnhwWTJzaU9qQXNJbUZqZEdsdmJrSnNkWElpT2pBc0ltRmpkR2x2YmtOb1lXNW5aU0k2TUN3aVlXTjBhVzl1Um05amRYTWlPakFzSW1GamRHbHZibE5sYkdWamRDSTZNQ3dpYUdsa1pVbHVUV0ZwYkdKaFkyc2lPbVpoYkhObExDSnBibWwwVTJOeWFYQjBJam9pSW4xOUxIc2lZWFIwY21saWRYUmxjeUk2ZXlKamJHRnpjeUk2SW1KbVVYVnBZMnROYjJSbFJXeGxiV1Z1ZEVOc1lYTnpJaXdpYVdRaU9pSmlabEYxYVdOclRXOWtaVGd4TVRRd05EWWlMQ0p0WkdGMFlTSTZJbnRjSW1SbGJHVjBZV0pzWlZ3aU9pQjBjblZsTENCY0luUjVjR1ZjSWpvZ1hDSmxiR1Z0Wlc1MFhDSjlJbjBzSW1SaGRHRWlPbnNpZEdsMGJHVWlPaUpJWlNCc1pTWnBZV04xZEdVN1pHOGdlU0JoWTJWd2RHOGdiR0VnUEdFZ2FISmxaajFjSW1waGRtRnpZM0pwY0hRNmRtOXBaQ2d3S1R0Y0lpQnZibU5zYVdOclBWd2lkMmx1Wkc5M0xtOXdaVzRvSjJsdVpHVjRMbkJvY0Q5dmNIUnBiMjQ5WTI5dFgyTnZiblJsYm5RbWRtbGxkejFoY25ScFkyeGxKbWxrUFRjd0prbDBaVzFwWkQwMU56QW1kRzF3YkQxamIyMXdiMjVsYm5RbkxDZFFjbWwyWVdOcFpHRmtKeXduYzJOeWIyeHNZbUZ5Y3oxNVpYTXNkMmxrZEdnOU5EQXdMR2hsYVdkb2REMDBNREFuS1Z3aVBqeGlQangxUGxCdmJDWnBZV04xZEdVN1hIVXdNR0ZrZEdsallTQmtaU0J3Y21sMllXTnBaR0ZrUEZ3dmRUNDhYQzlpUGp4Y0wyRStJaXdpYVdOdmJpSTZJaTR1WEM5aFpHMXBibWx6ZEhKaGRHOXlYQzlqYjIxd2IyNWxiblJ6WEM5amIyMWZZbkpsWlhwcGJtZG1iM0p0YzF3dmJHbGljbUZ5YVdWelhDOXFjWFZsY25sY0wzUm9aVzFsYzF3dmNYVnBZMnR0YjJSbFhDOXBYQzlwWTI5dVgyTm9aV05yTFdKdmVDNXdibWNpZlN3aWNISnZjR1Z5ZEdsbGN5STZleUowZVhCbElqb2laV3hsYldWdWRDSXNJbUptVkhsd1pTSTZJbUptUTJobFkydGliM2dpTENKc1lXSmxiQ0k2SWtobElHeGxKbWxoWTNWMFpUdGtieUI1SUdGalpYQjBieUJzWVNBOFlTQm9jbVZtUFZ3aWFtRjJZWE5qY21sd2REcDJiMmxrS0RBcE8xd2lJRzl1WTJ4cFkyczlYQ0ozYVc1a2IzY3ViM0JsYmlnbmFXNWtaWGd1Y0dod1AyOXdkR2x2YmoxamIyMWZZMjl1ZEdWdWRDWjJhV1YzUFdGeWRHbGpiR1VtYVdROU56QW1TWFJsYldsa1BUVTNNQ1owYlhCc1BXTnZiWEJ2Ym1WdWRDY3NKMUJ5YVhaaFkybGtZV1FuTENkelkzSnZiR3hpWVhKelBYbGxjeXgzYVdSMGFEMDBNREFzYUdWcFoyaDBQVFF3TUNjcFhDSStQR0krUEhVK1VHOXNKbWxoWTNWMFpUdGNkVEF3WVdSMGFXTmhJR1JsSUhCeWFYWmhZMmxrWVdROFhDOTFQanhjTDJJK1BGd3ZZVDRpTENKc1lXSmxiRkJ2YzJsMGFXOXVJam9pYkdWbWRDSXNJbUptVG1GdFpTSTZJbEJ5YVhaaFkybGtZV1FpTENKa1lrbGtJam8xTVN3aWIzSmtaWEpPZFcxaVpYSWlPaUl0TVNJc0luUmhZa2x1WkdWNElqb2lMVEVpTENKc2IyZG5hVzVuSWpwMGNuVmxMQ0pvYVdSbFRHRmlaV3dpT21aaGJITmxMQ0p5WlhGMWFYSmxaQ0k2ZEhKMVpTd2lhR2x1ZENJNklpSXNJbTltWmlJNlptRnNjMlVzSW5aaGJIVmxJam9pYzF4MU1EQmxaQ0lzSW1Ob1pXTnJaV1FpT21aaGJITmxMQ0p5WldGa2IyNXNlU0k2Wm1Gc2MyVXNJbTFoYVd4aVlXTnJRV05qWlhCMElqcG1ZV3h6WlN3aWJXRnBiR0poWTJ0RGIyNXVaV04wVjJsMGFDSTZJaUlzSW5aaGJHbGtZWFJwYjI1RGIyNWthWFJwYjI0aU9qRXNJblpoYkdsa1lYUnBiMjVKWkNJNklqRXpNU0lzSW5aaGJHbGtZWFJwYjI1RGIyUmxJam9pSWl3aWRtRnNhV1JoZEdsdmJrMWxjM05oWjJVaU9pSkVaV0psSUdGalpYQjBZWElnYkdFZ2NHOXNhVngxTURCbFpIUnBZMkVnWkdVZ2NISnBkbUZqYVdSaFpDSXNJblpoYkdsa1lYUnBiMjVHZFc1amRHbHZiazVoYldVaU9pSm1abDlqYUdWamEyVmtJaXdpYVc1cGRFTnZibVJwZEdsdmJpSTZNQ3dpYVc1cGRFbGtJam93TENKcGJtbDBRMjlrWlNJNklpSXNJbWx1YVhSR2RXNWpkR2x2Yms1aGJXVWlPaUlpTENKcGJtbDBSbTl5YlVWdWRISjVJam93TENKcGJtbDBVR0ZuWlVWdWRISjVJam93TENKaFkzUnBiMjVEYjI1a2FYUnBiMjRpT2pBc0ltRmpkR2x2Ymtsa0lqb3dMQ0poWTNScGIyNURiMlJsSWpvaUlpd2lZV04wYVc5dVJuVnVZM1JwYjI1T1lXMWxJam9pSWl3aVlXTjBhVzl1UTJ4cFkyc2lPakFzSW1GamRHbHZia0pzZFhJaU9qQXNJbUZqZEdsdmJrTm9ZVzVuWlNJNk1Dd2lZV04wYVc5dVJtOWpkWE1pT2pBc0ltRmpkR2x2YmxObGJHVmpkQ0k2TUN3aWFHbGtaVWx1VFdGcGJHSmhZMnNpT21aaGJITmxMQ0pwYm1sMFUyTnlhWEIwSWpvaUluMTlMSHNpWVhSMGNtbGlkWFJsY3lJNmV5SmpiR0Z6Y3lJNkltSm1VWFZwWTJ0TmIyUmxSV3hsYldWdWRFTnNZWE56SWl3aWFXUWlPaUppWmxGMWFXTnJUVzlrWlRrNE9EUTJNVGtpTENKdFpHRjBZU0k2SW50Y0ltUmxiR1YwWVdKc1pWd2lPaUIwY25WbExDQmNJblI1Y0dWY0lqb2dYQ0psYkdWdFpXNTBYQ0o5SW4wc0ltUmhkR0VpT25zaWRHbDBiR1VpT2lKSmJuUnliMlIxZW1OaElHeHZjeUJqWVhKaFkzUmxjbVZ6SUdSbElHeGhJR2x0WVdkbGJpSXNJbWxqYjI0aU9pSXVMbHd2WVdSdGFXNXBjM1J5WVhSdmNsd3ZZMjl0Y0c5dVpXNTBjMXd2WTI5dFgySnlaV1Y2YVc1blptOXliWE5jTDJ4cFluSmhjbWxsYzF3dmFuRjFaWEo1WEM5MGFHVnRaWE5jTDNGMWFXTnJiVzlrWlZ3dmFWd3ZhV052Ymw5allYQjBZMmhoTG5CdVp5SjlMQ0p3Y205d1pYSjBhV1Z6SWpwN0luUjVjR1VpT2lKbGJHVnRaVzUwSWl3aVltWlVlWEJsSWpvaVltWkRZWEIwWTJoaElpd2liR0ZpWld3aU9pSkpiblJ5YjJSMWVtTmhJR3h2Y3lCallYSmhZM1JsY21WeklHUmxJR3hoSUdsdFlXZGxiaUlzSW14aFltVnNVRzl6YVhScGIyNGlPaUpzWldaMElpd2lZbVpPWVcxbElqb2lRMkZ3ZEdOb1lTSXNJbVJpU1dRaU9qVXlMQ0p2Y21SbGNrNTFiV0psY2lJNkxURXNJblJoWWtsdVpHVjRJam9pTFRFaUxDSnNiMmRuYVc1bklqcG1ZV3h6WlN3aWFHbGtaVXhoWW1Wc0lqcG1ZV3h6WlN3aWNtVnhkV2x5WldRaU9tWmhiSE5sTENKb2FXNTBJam9pSWl3aWIyWm1JanBtWVd4elpTd2ljbVZoWkc5dWJIa2lPbVpoYkhObExDSjJZV3hwWkdGMGFXOXVRMjl1WkdsMGFXOXVJam93TENKMllXeHBaR0YwYVc5dVNXUWlPakFzSW5aaGJHbGtZWFJwYjI1RGIyUmxJam9pSWl3aWRtRnNhV1JoZEdsdmJrMWxjM05oWjJVaU9pSWlMQ0oyWVd4cFpHRjBhVzl1Um5WdVkzUnBiMjVPWVcxbElqb2lJaXdpYVc1cGRFTnZibVJwZEdsdmJpSTZNQ3dpYVc1cGRFbGtJam93TENKcGJtbDBRMjlrWlNJNklpSXNJbWx1YVhSR2RXNWpkR2x2Yms1aGJXVWlPaUlpTENKcGJtbDBSbTl5YlVWdWRISjVJam93TENKcGJtbDBVR0ZuWlVWdWRISjVJam93TENKaFkzUnBiMjVEYjI1a2FYUnBiMjRpT2pBc0ltRmpkR2x2Ymtsa0lqb3dMQ0poWTNScGIyNURiMlJsSWpvaUlpd2lZV04wYVc5dVJuVnVZM1JwYjI1T1lXMWxJam9pSWl3aVlXTjBhVzl1UTJ4cFkyc2lPakFzSW1GamRHbHZia0pzZFhJaU9qQXNJbUZqZEdsdmJrTm9ZVzVuWlNJNk1Dd2lZV04wYVc5dVJtOWpkWE1pT2pBc0ltRmpkR2x2YmxObGJHVmpkQ0k2TUN3aWFHbGtaVWx1VFdGcGJHSmhZMnNpT21aaGJITmxMQ0ozYVdSMGFDSTZJaUlzSW1sdWFYUlRZM0pwY0hRaU9pSWlmWDFkZlN4N0ltRjBkSEpwWW5WMFpYTWlPbnNpWTJ4aGMzTWlPaUppWmxGMWFXTnJUVzlrWlZCaFoyVkRiR0Z6Y3lJc0ltbGtJam9pWW1aUmRXbGphMDF2WkdWUVlXZGxNaUlzSW0xa1lYUmhJam9pZTF3aVpHVnNaWFJoWW14bFhDSTZJSFJ5ZFdVc0lGd2lkSGx3WlZ3aU9pQmNJbkJoWjJWY0luMGlmU3dpY0hKdmNHVnlkR2xsY3lJNmV5SjBlWEJsSWpvaWNHRm5aU0lzSW5CaFoyVk9kVzFpWlhJaU9qSXNJbkJoWjJWSmJuUnlieUk2SWp4d0lITjBlV3hsUFZ3aWRHVjRkQzFoYkdsbmJqb2dZMlZ1ZEdWeU8xd2lQanh6ZEhKdmJtYytSM0poWTJsaGN5QndiM0lnY0c5dVpYSnpaU0JsYmlCamIyNTBZV04wYnlCamIyNGdibTl6YjNSeWIzTXVQRnd2YzNSeWIyNW5QanhjTDNBK0luMHNJbk4wWVhSbElqb2liM0JsYmlJc0ltUmhkR0VpT25zaWRHbDBiR1VpT2lKUVlXZGxJRElpTENKcFkyOXVJam9pTGk1Y0wyRmtiV2x1YVhOMGNtRjBiM0pjTDJOdmJYQnZibVZ1ZEhOY0wyTnZiVjlpY21WbGVtbHVaMlp2Y20xelhDOXNhV0p5WVhKcFpYTmNMMnB4ZFdWeWVWd3ZkR2hsYldWelhDOXhkV2xqYTIxdlpHVmNMMmxjTDJsamIyNWZjR0ZuWlM1d2JtY2lmU3dpWTJocGJHUnlaVzRpT2x0ZGZWMTk=</template_code>		<template_code_processed>UXVpY2tNb2Rl</template_code_processed>		<template_areas>W3siZWxlbWVudHMiOlt7ImVsZW1lbnQiOm51bGwsImJmVHlwZSI6IlRleHQiLCJlbGVtZW50VHlwZSI6IiIsIm9wdGlvbnMiOnsidmFsdWUiOiIiLCJwYXNzd29yZCI6ZmFsc2UsIm1haWxiYWNrIjpmYWxzZSwicmVhZG9ubHkiOmZhbHNlfSwiZGF0YTEiOiIiLCJkYXRhMiI6IiIsImRhdGEzIjoiIiwic2NyaXB0MWNvbmQiOjAsInNjcmlwdDFpZCI6MCwic2NyaXB0MWNvZGUiOiIiLCJzY3JpcHQxZmxhZzEiOjAsInNjcmlwdDFmbGFnMiI6MCwic2NyaXB0MmNvbmQiOjAsInNjcmlwdDJpZCI6MCwic2NyaXB0MmNvZGUiOiIiLCJzY3JpcHQyZmxhZzEiOjAsInNjcmlwdDJmbGFnMiI6MCwic2NyaXB0MmZsYWczIjowLCJzY3JpcHQyZmxhZzQiOjAsInNjcmlwdDJmbGFnNSI6MCwic2NyaXB0M2NvbmQiOjEsInNjcmlwdDNpZCI6IjE3MyIsInNjcmlwdDNjb2RlIjoiIiwic2NyaXB0M21zZyI6IkRlYmUgaW50cm9kdWNpciB1biBub21icmUiLCJmdW5jdGlvbk5hbWVTY3JpcHQxIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MiI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDMiOiJmZl92YWx1ZW5vdGVtcHR5IiwiZmxhZzEiOjAsImZsYWcyIjowLCJtYWlsYmFjayI6MCwibWFpbGJhY2tmaWxlIjoiIiwidGl0bGUiOiJQZXJzb25hIGRlIGNvbnRhY3RvIiwibmFtZSI6Ik5vbWJyZSIsInBhZ2UiOiIxIiwib3JkZXJOdW1iZXIiOjEsImRiSWQiOjQ2LCJhcHBFbGVtZW50T3JkZXJJZCI6MCwiaWQiOjAsImxvZ2dpbmciOnRydWUsInFJZCI6ImJmUXVpY2tNb2RlMTM2MTU4MiIsImludGVybmFsVHlwZSI6ImJmVGV4dGZpZWxkIiwibWFpbGJhY2tBc1NlbmRlciI6MCwidGFiSW5kZXgiOiItMSIsImhpZGVJbk1haWxiYWNrIjpmYWxzZX0seyJlbGVtZW50IjpudWxsLCJiZlR5cGUiOiJUZXh0IiwiZWxlbWVudFR5cGUiOiIiLCJvcHRpb25zIjp7InZhbHVlIjoiIiwicGFzc3dvcmQiOmZhbHNlLCJtYWlsYmFjayI6ZmFsc2UsInJlYWRvbmx5IjpmYWxzZX0sImRhdGExIjoiIiwiZGF0YTIiOiIiLCJkYXRhMyI6IiIsInNjcmlwdDFjb25kIjowLCJzY3JpcHQxaWQiOjAsInNjcmlwdDFjb2RlIjoiIiwic2NyaXB0MWZsYWcxIjowLCJzY3JpcHQxZmxhZzIiOjAsInNjcmlwdDJjb25kIjowLCJzY3JpcHQyaWQiOjAsInNjcmlwdDJjb2RlIjoiIiwic2NyaXB0MmZsYWcxIjowLCJzY3JpcHQyZmxhZzIiOjAsInNjcmlwdDJmbGFnMyI6MCwic2NyaXB0MmZsYWc0IjowLCJzY3JpcHQyZmxhZzUiOjAsInNjcmlwdDNjb25kIjowLCJzY3JpcHQzaWQiOjAsInNjcmlwdDNjb2RlIjoiIiwic2NyaXB0M21zZyI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDEiOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQyIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MyI6IiIsImZsYWcxIjowLCJmbGFnMiI6MCwibWFpbGJhY2siOjAsIm1haWxiYWNrZmlsZSI6IiIsInRpdGxlIjoiUG9ibGFjaVx1MDBmM24iLCJuYW1lIjoiUG9ibGFjaW9uIiwicGFnZSI6IjEiLCJvcmRlck51bWJlciI6MiwiZGJJZCI6NDcsImFwcEVsZW1lbnRPcmRlcklkIjowLCJpZCI6MCwibG9nZ2luZyI6dHJ1ZSwicUlkIjoiYmZRdWlja01vZGU4OTEyMjcyIiwiaW50ZXJuYWxUeXBlIjoiYmZUZXh0ZmllbGQiLCJtYWlsYmFja0FzU2VuZGVyIjowLCJ0YWJJbmRleCI6Ii0xIiwiaGlkZUluTWFpbGJhY2siOmZhbHNlfSx7ImVsZW1lbnQiOm51bGwsImJmVHlwZSI6IlRleHQiLCJlbGVtZW50VHlwZSI6IiIsIm9wdGlvbnMiOnsidmFsdWUiOiIiLCJwYXNzd29yZCI6ZmFsc2UsIm1haWxiYWNrIjpmYWxzZSwicmVhZG9ubHkiOmZhbHNlfSwiZGF0YTEiOiIiLCJkYXRhMiI6IiIsImRhdGEzIjoiIiwic2NyaXB0MWNvbmQiOjAsInNjcmlwdDFpZCI6MCwic2NyaXB0MWNvZGUiOiIiLCJzY3JpcHQxZmxhZzEiOjAsInNjcmlwdDFmbGFnMiI6MCwic2NyaXB0MmNvbmQiOjAsInNjcmlwdDJpZCI6MCwic2NyaXB0MmNvZGUiOiIiLCJzY3JpcHQyZmxhZzEiOjAsInNjcmlwdDJmbGFnMiI6MCwic2NyaXB0MmZsYWczIjowLCJzY3JpcHQyZmxhZzQiOjAsInNjcmlwdDJmbGFnNSI6MCwic2NyaXB0M2NvbmQiOjAsInNjcmlwdDNpZCI6MCwic2NyaXB0M2NvZGUiOiIiLCJzY3JpcHQzbXNnIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MSI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDIiOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQzIjoiIiwiZmxhZzEiOjAsImZsYWcyIjowLCJtYWlsYmFjayI6MCwibWFpbGJhY2tmaWxlIjoiIiwidGl0bGUiOiJUZWxcdTAwZTlmb25vIiwibmFtZSI6IlRlbGVmb25vIiwicGFnZSI6IjEiLCJvcmRlck51bWJlciI6MywiZGJJZCI6NDgsImFwcEVsZW1lbnRPcmRlcklkIjowLCJpZCI6MCwibG9nZ2luZyI6dHJ1ZSwicUlkIjoiYmZRdWlja01vZGU0MjM4MDcyIiwiaW50ZXJuYWxUeXBlIjoiYmZUZXh0ZmllbGQiLCJtYWlsYmFja0FzU2VuZGVyIjowLCJ0YWJJbmRleCI6Ii0xIiwiaGlkZUluTWFpbGJhY2siOmZhbHNlfSx7ImVsZW1lbnQiOm51bGwsImJmVHlwZSI6IlRleHQiLCJlbGVtZW50VHlwZSI6IiIsIm9wdGlvbnMiOnsidmFsdWUiOiIiLCJwYXNzd29yZCI6ZmFsc2UsIm1haWxiYWNrIjpmYWxzZSwicmVhZG9ubHkiOmZhbHNlfSwiZGF0YTEiOiIiLCJkYXRhMiI6IiIsImRhdGEzIjoiIiwic2NyaXB0MWNvbmQiOjAsInNjcmlwdDFpZCI6MCwic2NyaXB0MWNvZGUiOiIiLCJzY3JpcHQxZmxhZzEiOjAsInNjcmlwdDFmbGFnMiI6MCwic2NyaXB0MmNvbmQiOjAsInNjcmlwdDJpZCI6MCwic2NyaXB0MmNvZGUiOiIiLCJzY3JpcHQyZmxhZzEiOjAsInNjcmlwdDJmbGFnMiI6MCwic2NyaXB0MmZsYWczIjowLCJzY3JpcHQyZmxhZzQiOjAsInNjcmlwdDJmbGFnNSI6MCwic2NyaXB0M2NvbmQiOjEsInNjcmlwdDNpZCI6IjE3MSIsInNjcmlwdDNjb2RlIjoiIiwic2NyaXB0M21zZyI6IkRlYmUgaW50cm9kdWNpciB1bmEgZGlyZWNjaVx1MDBmM24gZGUgRW1haWwgdlx1MDBlMWxpZGEiLCJmdW5jdGlvbk5hbWVTY3JpcHQxIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MiI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDMiOiJmZl92YWxpZGVtYWlsIiwiZmxhZzEiOjAsImZsYWcyIjowLCJtYWlsYmFjayI6MCwibWFpbGJhY2tmaWxlIjoiIiwidGl0bGUiOiJFLU1haWwiLCJuYW1lIjoiRW1haWwiLCJwYWdlIjoiMSIsIm9yZGVyTnVtYmVyIjo0LCJkYklkIjo0OSwiYXBwRWxlbWVudE9yZGVySWQiOjAsImlkIjowLCJsb2dnaW5nIjp0cnVlLCJxSWQiOiJiZlF1aWNrTW9kZTczNzg5MDMiLCJpbnRlcm5hbFR5cGUiOiJiZlRleHRmaWVsZCIsIm1haWxiYWNrQXNTZW5kZXIiOjAsInRhYkluZGV4IjoiLTEiLCJoaWRlSW5NYWlsYmFjayI6ZmFsc2V9LHsiZWxlbWVudCI6bnVsbCwiYmZUeXBlIjoiVGV4dGFyZWEiLCJlbGVtZW50VHlwZSI6IiIsIm9wdGlvbnMiOnsidmFsdWUiOiIiLCJyZWFkb25seSI6ZmFsc2V9LCJkYXRhMSI6IiIsImRhdGEyIjoiIiwiZGF0YTMiOiIiLCJzY3JpcHQxY29uZCI6MCwic2NyaXB0MWlkIjowLCJzY3JpcHQxY29kZSI6IiIsInNjcmlwdDFmbGFnMSI6MCwic2NyaXB0MWZsYWcyIjowLCJzY3JpcHQyY29uZCI6MCwic2NyaXB0MmlkIjowLCJzY3JpcHQyY29kZSI6IiIsInNjcmlwdDJmbGFnMSI6MCwic2NyaXB0MmZsYWcyIjowLCJzY3JpcHQyZmxhZzMiOjAsInNjcmlwdDJmbGFnNCI6MCwic2NyaXB0MmZsYWc1IjowLCJzY3JpcHQzY29uZCI6MCwic2NyaXB0M2lkIjowLCJzY3JpcHQzY29kZSI6IiIsInNjcmlwdDNtc2ciOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQxIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MiI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDMiOiIiLCJmbGFnMSI6MCwiZmxhZzIiOjAsIm1haWxiYWNrIjowLCJtYWlsYmFja2ZpbGUiOiIiLCJ0aXRsZSI6Ik9ic2VydmFjaW9uZXMiLCJuYW1lIjoiT2JzZXJ2YWNpb25lcyIsInBhZ2UiOiIxIiwib3JkZXJOdW1iZXIiOjUsImRiSWQiOjUwLCJhcHBFbGVtZW50T3JkZXJJZCI6MCwiaWQiOjAsImxvZ2dpbmciOnRydWUsInFJZCI6ImJmUXVpY2tNb2RlNzI5MTY4MSIsImludGVybmFsVHlwZSI6ImJmVGV4dGFyZWEiLCJ0YWJJbmRleCI6Ii0xIiwiaGlkZUluTWFpbGJhY2siOmZhbHNlfSx7ImVsZW1lbnQiOm51bGwsImJmVHlwZSI6IkNoZWNrYm94IiwiZWxlbWVudFR5cGUiOiIiLCJvcHRpb25zIjp7ImNoZWNrZWQiOmZhbHNlLCJ2YWx1ZSI6InNcdTAwZWQiLCJyZWFkb25seSI6ZmFsc2V9LCJkYXRhMSI6InNcdTAwZWQiLCJkYXRhMiI6IiIsImRhdGEzIjoiIiwic2NyaXB0MWNvbmQiOjAsInNjcmlwdDFpZCI6MCwic2NyaXB0MWNvZGUiOiIiLCJzY3JpcHQxZmxhZzEiOjAsInNjcmlwdDFmbGFnMiI6MCwic2NyaXB0MmNvbmQiOjAsInNjcmlwdDJpZCI6MCwic2NyaXB0MmNvZGUiOiIiLCJzY3JpcHQyZmxhZzEiOjAsInNjcmlwdDJmbGFnMiI6MCwic2NyaXB0MmZsYWczIjowLCJzY3JpcHQyZmxhZzQiOjAsInNjcmlwdDJmbGFnNSI6MCwic2NyaXB0M2NvbmQiOjEsInNjcmlwdDNpZCI6IjEzMSIsInNjcmlwdDNjb2RlIjoiIiwic2NyaXB0M21zZyI6IkRlYmUgYWNlcHRhciBsYSBwb2xpXHUwMGVkdGljYSBkZSBwcml2YWNpZGFkIiwiZnVuY3Rpb25OYW1lU2NyaXB0MSI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDIiOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQzIjoiZmZfY2hlY2tlZCIsImZsYWcxIjowLCJmbGFnMiI6MCwibWFpbGJhY2siOjAsIm1haWxiYWNrZmlsZSI6IiIsInRpdGxlIjoiSGUgbGUmaWFjdXRlO2RvIHkgYWNlcHRvIGxhIDxhIGhyZWY9XCJqYXZhc2NyaXB0OnZvaWQoMCk7XCIgb25jbGljaz1cIndpbmRvdy5vcGVuKCdpbmRleC5waHA/b3B0aW9uPWNvbV9jb250ZW50JnZpZXc9YXJ0aWNsZSZpZD03MCZJdGVtaWQ9NTcwJnRtcGw9Y29tcG9uZW50JywnUHJpdmFjaWRhZCcsJ3Njcm9sbGJhcnM9eWVzLHdpZHRoPTQwMCxoZWlnaHQ9NDAwJylcIj48Yj48dT5Qb2wmaWFjdXRlO1x1MDBhZHRpY2EgZGUgcHJpdmFjaWRhZDxcL3U+PFwvYj48XC9hPiIsIm5hbWUiOiJQcml2YWNpZGFkIiwicGFnZSI6IjEiLCJvcmRlck51bWJlciI6NiwiZGJJZCI6NTEsImFwcEVsZW1lbnRPcmRlcklkIjowLCJpZCI6MCwibG9nZ2luZyI6dHJ1ZSwicUlkIjoiYmZRdWlja01vZGU4MTE0MDQ2IiwiaW50ZXJuYWxUeXBlIjoiYmZDaGVja2JveCIsIm1haWxiYWNrQWNjZXB0IjpmYWxzZSwibWFpbGJhY2tBY2NlcHRDb25uZWN0V2l0aCI6IiIsInRhYkluZGV4IjoiLTEiLCJoaWRlSW5NYWlsYmFjayI6ZmFsc2V9LHsiZWxlbWVudCI6bnVsbCwiYmZUeXBlIjoiQ2FwdGNoYSIsImVsZW1lbnRUeXBlIjoiIiwib3B0aW9ucyI6eyJyZWFkb25seSI6ZmFsc2V9LCJkYXRhMSI6IiIsImRhdGEyIjoiIiwiZGF0YTMiOiIiLCJzY3JpcHQxY29uZCI6MCwic2NyaXB0MWlkIjowLCJzY3JpcHQxY29kZSI6IiIsInNjcmlwdDFmbGFnMSI6MCwic2NyaXB0MWZsYWcyIjowLCJzY3JpcHQyY29uZCI6MCwic2NyaXB0MmlkIjowLCJzY3JpcHQyY29kZSI6IiIsInNjcmlwdDJmbGFnMSI6MCwic2NyaXB0MmZsYWcyIjowLCJzY3JpcHQyZmxhZzMiOjAsInNjcmlwdDJmbGFnNCI6MCwic2NyaXB0MmZsYWc1IjowLCJzY3JpcHQzY29uZCI6MCwic2NyaXB0M2lkIjowLCJzY3JpcHQzY29kZSI6IiIsInNjcmlwdDNtc2ciOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQxIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MiI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDMiOiIiLCJmbGFnMSI6MCwiZmxhZzIiOjAsIm1haWxiYWNrIjowLCJtYWlsYmFja2ZpbGUiOiIiLCJ0aXRsZSI6IkludHJvZHV6Y2EgbG9zIGNhcmFjdGVyZXMgZGUgbGEgaW1hZ2VuIiwibmFtZSI6IkNhcHRjaGEiLCJwYWdlIjoiMSIsIm9yZGVyTnVtYmVyIjo3LCJkYklkIjo1MiwiYXBwRWxlbWVudE9yZGVySWQiOjAsImlkIjowLCJsb2dnaW5nIjpmYWxzZSwicUlkIjoiYmZRdWlja01vZGU5ODg0NjE5IiwiaW50ZXJuYWxUeXBlIjoiYmZDYXB0Y2hhIiwid2lkdGgiOjAsInRhYkluZGV4IjoiLTEiLCJoaWRlSW5NYWlsYmFjayI6ZmFsc2V9LHsiZWxlbWVudCI6bnVsbCwiYmZUeXBlIjoiIiwiZWxlbWVudFR5cGUiOiIiLCJvcHRpb25zIjpbXSwiZGF0YTEiOiIiLCJkYXRhMiI6IiIsImRhdGEzIjoiIiwic2NyaXB0MWNvbmQiOjAsInNjcmlwdDFpZCI6MCwic2NyaXB0MWNvZGUiOiIiLCJzY3JpcHQxZmxhZzEiOjAsInNjcmlwdDFmbGFnMiI6MCwic2NyaXB0MmNvbmQiOjEsInNjcmlwdDJpZCI6IjE3MCIsInNjcmlwdDJjb2RlIjoiIiwic2NyaXB0MmZsYWcxIjowLCJzY3JpcHQyZmxhZzIiOjAsInNjcmlwdDJmbGFnMyI6MCwic2NyaXB0MmZsYWc0IjowLCJzY3JpcHQyZmxhZzUiOjAsInNjcmlwdDNjb25kIjowLCJzY3JpcHQzaWQiOjAsInNjcmlwdDNjb2RlIjoiIiwic2NyaXB0M21zZyI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDEiOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQyIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MyI6IiIsImZsYWcxIjowLCJmbGFnMiI6MCwibWFpbGJhY2siOjAsIm1haWxiYWNrZmlsZSI6IiIsInRpdGxlIjoiYmZGYWtlVGl0bGUiLCJuYW1lIjoiYmZGYWtlTmFtZSIsInBhZ2UiOjEsIm9yZGVyTnVtYmVyIjowLCJkYklkIjo1NywiYXBwRWxlbWVudE9yZGVySWQiOjAsImlkIjowLCJsb2dnaW5nIjowLCJxSWQiOjAsImludGVybmFsVHlwZSI6IiJ9LHsiZWxlbWVudCI6bnVsbCwiYmZUeXBlIjoiIiwiZWxlbWVudFR5cGUiOiIiLCJvcHRpb25zIjpbXSwiZGF0YTEiOiIiLCJkYXRhMiI6IiIsImRhdGEzIjoiIiwic2NyaXB0MWNvbmQiOjAsInNjcmlwdDFpZCI6MCwic2NyaXB0MWNvZGUiOiIiLCJzY3JpcHQxZmxhZzEiOjAsInNjcmlwdDFmbGFnMiI6MCwic2NyaXB0MmNvbmQiOjEsInNjcmlwdDJpZCI6IjE1MiIsInNjcmlwdDJjb2RlIjoiIiwic2NyaXB0MmZsYWcxIjowLCJzY3JpcHQyZmxhZzIiOjAsInNjcmlwdDJmbGFnMyI6MCwic2NyaXB0MmZsYWc0IjowLCJzY3JpcHQyZmxhZzUiOjAsInNjcmlwdDNjb25kIjowLCJzY3JpcHQzaWQiOjAsInNjcmlwdDNjb2RlIjoiIiwic2NyaXB0M21zZyI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDEiOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQyIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MyI6IiIsImZsYWcxIjowLCJmbGFnMiI6MCwibWFpbGJhY2siOjAsIm1haWxiYWNrZmlsZSI6IiIsInRpdGxlIjoiYmZGYWtlVGl0bGUyIiwibmFtZSI6ImJmRmFrZU5hbWUyIiwicGFnZSI6MSwib3JkZXJOdW1iZXIiOjAsImRiSWQiOjU4LCJhcHBFbGVtZW50T3JkZXJJZCI6MCwiaWQiOjAsImxvZ2dpbmciOjAsInFJZCI6MCwiaW50ZXJuYWxUeXBlIjoiIn0seyJlbGVtZW50IjpudWxsLCJiZlR5cGUiOiIiLCJlbGVtZW50VHlwZSI6IiIsIm9wdGlvbnMiOltdLCJkYXRhMSI6IiIsImRhdGEyIjoiIiwiZGF0YTMiOiIiLCJzY3JpcHQxY29uZCI6MCwic2NyaXB0MWlkIjowLCJzY3JpcHQxY29kZSI6IiIsInNjcmlwdDFmbGFnMSI6MCwic2NyaXB0MWZsYWcyIjowLCJzY3JpcHQyY29uZCI6MSwic2NyaXB0MmlkIjoiMTY5Iiwic2NyaXB0MmNvZGUiOiIiLCJzY3JpcHQyZmxhZzEiOjAsInNjcmlwdDJmbGFnMiI6MCwic2NyaXB0MmZsYWczIjowLCJzY3JpcHQyZmxhZzQiOjAsInNjcmlwdDJmbGFnNSI6MCwic2NyaXB0M2NvbmQiOjAsInNjcmlwdDNpZCI6MCwic2NyaXB0M2NvZGUiOiIiLCJzY3JpcHQzbXNnIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MSI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDIiOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQzIjoiIiwiZmxhZzEiOjAsImZsYWcyIjowLCJtYWlsYmFjayI6MCwibWFpbGJhY2tmaWxlIjoiIiwidGl0bGUiOiJiZkZha2VUaXRsZTMiLCJuYW1lIjoiYmZGYWtlTmFtZTMiLCJwYWdlIjoxLCJvcmRlck51bWJlciI6MCwiZGJJZCI6NTksImFwcEVsZW1lbnRPcmRlcklkIjowLCJpZCI6MCwibG9nZ2luZyI6MCwicUlkIjowLCJpbnRlcm5hbFR5cGUiOiIifSx7ImVsZW1lbnQiOm51bGwsImJmVHlwZSI6IiIsImVsZW1lbnRUeXBlIjoiIiwib3B0aW9ucyI6W10sImRhdGExIjoiIiwiZGF0YTIiOiIiLCJkYXRhMyI6IiIsInNjcmlwdDFjb25kIjowLCJzY3JpcHQxaWQiOjAsInNjcmlwdDFjb2RlIjoiIiwic2NyaXB0MWZsYWcxIjowLCJzY3JpcHQxZmxhZzIiOjAsInNjcmlwdDJjb25kIjoxLCJzY3JpcHQyaWQiOiIxNjciLCJzY3JpcHQyY29kZSI6IiIsInNjcmlwdDJmbGFnMSI6MCwic2NyaXB0MmZsYWcyIjowLCJzY3JpcHQyZmxhZzMiOjAsInNjcmlwdDJmbGFnNCI6MCwic2NyaXB0MmZsYWc1IjowLCJzY3JpcHQzY29uZCI6MCwic2NyaXB0M2lkIjowLCJzY3JpcHQzY29kZSI6IiIsInNjcmlwdDNtc2ciOiIiLCJmdW5jdGlvbk5hbWVTY3JpcHQxIjoiIiwiZnVuY3Rpb25OYW1lU2NyaXB0MiI6IiIsImZ1bmN0aW9uTmFtZVNjcmlwdDMiOiIiLCJmbGFnMSI6MCwiZmxhZzIiOjAsIm1haWxiYWNrIjowLCJtYWlsYmFja2ZpbGUiOiIiLCJ0aXRsZSI6ImJmRmFrZVRpdGxlNCIsIm5hbWUiOiJiZkZha2VOYW1lNCIsInBhZ2UiOjEsIm9yZGVyTnVtYmVyIjowLCJkYklkIjo2MCwiYXBwRWxlbWVudE9yZGVySWQiOjAsImlkIjowLCJsb2dnaW5nIjowLCJxSWQiOjAsImludGVybmFsVHlwZSI6IiJ9XSwiZWxlbWVudENvdW50Ijo3fV0=</template_areas>		<script2cond>2</script2cond>
+		<script2code>function ff_contacto2_submitted(status\x2C message){if(status==0){ff_switchpage(2)\x3B}else{alert(message)\x3B}}</script2code>
+		<element id="57">
+			<name>bfFakeName</name>
+			<title>bfFakeTitle</title>
+			<type></type>
+			<logging>0</logging>
+			<posx>0</posx>
+			<posy>280</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script2cond>1</script2cond>
+			<script2id>170</script2id>
+			<script2name>ff_validate_submit</script2name>
+		</element>
+		<element id="58">
+			<name>bfFakeName2</name>
+			<title>bfFakeTitle2</title>
+			<type></type>
+			<logging>0</logging>
+			<posx>0</posx>
+			<posy>320</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script2cond>1</script2cond>
+			<script2id>152</script2id>
+			<script2name>ff_resetForm</script2name>
+		</element>
+		<element id="59">
+			<name>bfFakeName3</name>
+			<title>bfFakeTitle3</title>
+			<type></type>
+			<logging>0</logging>
+			<posx>0</posx>
+			<posy>360</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script2cond>1</script2cond>
+			<script2id>169</script2id>
+			<script2name>ff_validate_prevpage</script2name>
+		</element>
+		<element id="60">
+			<name>bfFakeName4</name>
+			<title>bfFakeTitle4</title>
+			<type></type>
+			<logging>0</logging>
+			<posx>0</posx>
+			<posy>400</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script2cond>1</script2cond>
+			<script2id>167</script2id>
+			<script2name>ff_validate_nextpage</script2name>
+		</element>
+		<element id="46">
+			<name>Nombre</name>
+			<title>Persona de contacto</title>
+			<type>Text</type>
+			<posx>0</posx>
+			<posy>0</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script3cond>1</script3cond>
+			<script3id>173</script3id>
+			<script3name>ff_valuenotempty</script3name>
+			<script3msg>Debe introducir un nombre</script3msg>
+		</element>
+		<element id="47">
+			<name>Poblacion</name>
+			<title>Población</title>
+			<type>Text</type>
+			<posx>0</posx>
+			<posy>40</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+		<element id="48">
+			<name>Telefono</name>
+			<title>Teléfono</title>
+			<type>Text</type>
+			<posx>0</posx>
+			<posy>80</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+		<element id="49">
+			<name>Email</name>
+			<title>E-Mail</title>
+			<type>Text</type>
+			<posx>0</posx>
+			<posy>120</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<script3cond>1</script3cond>
+			<script3id>171</script3id>
+			<script3name>ff_validemail</script3name>
+			<script3msg>Debe introducir una dirección de Email válida</script3msg>
+		</element>
+		<element id="50">
+			<name>Observaciones</name>
+			<title>Observaciones</title>
+			<type>Textarea</type>
+			<posx>0</posx>
+			<posy>160</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+		<element id="51">
+			<name>Privacidad</name>
+			<title>He le\x26iacute\x3Bdo y acepto la \x3Ca href=\x22javascript:void(0)\x3B\x22 onclick=\x22window.open(\x27index.php?option=com_content\x26view=article\x26id=70\x26Itemid=570\x26tmpl=component\x27\x2C\x27Privacidad\x27\x2C\x27scrollbars=yes\x2Cwidth=400\x2Cheight=400\x27)\x22\x3E\x3Cb\x3E\x3Cu\x3EPol\x26iacute\x3B­tica de privacidad\x3C/u\x3E\x3C/b\x3E\x3C/a</title>
+			<type>Checkbox</type>
+			<posx>0</posx>
+			<posy>200</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+			<data1>sí</data1>
+			<script3cond>1</script3cond>
+			<script3id>131</script3id>
+			<script3name>ff_checked</script3name>
+			<script3msg>Debe aceptar la poliítica de privacidad</script3msg>
+		</element>
+		<element id="52">
+			<name>Captcha</name>
+			<title>Introduzca los caracteres de la imagen</title>
+			<type>Captcha</type>
+			<logging>0</logging>
+			<posx>0</posx>
+			<posy>240</posy>
+			<width>20</width>
+			<height>20</height>
+			<mailback>0</mailback>
+			<mailbackfile></mailbackfile>
+		</element>
+	</form>
+</FacileFormsPackage>
