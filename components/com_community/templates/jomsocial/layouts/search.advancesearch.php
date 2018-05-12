@@ -77,28 +77,28 @@ defined('_JEXEC') or die();
 <form id="jsform-search-advancesearch" name="jsform-search-advancesearch" class="js-form joms-form--search" action="<?php echo CRoute::getURI(); ?>" method="GET" onsubmit="advanceSearchUpdateKeyList()">
     <div id="optionContainer">
 
+        <!-- Nombre -->
+        <div class="joms-form__group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Juan" name="value3" />
+
+            <input type="hidden" name="condition3" value="contain" />
+            <input type="hidden" name="field3" value="username" />
+            <input type="hidden" name="fieldType3" value="text" />
+        </div>
+
         <!-- Oposición -->
         <div class="joms-form__group">
-            <label>Jueces y fiscales</label>
-            <input type="checkbox" name="value0[]" value="Jueces y fiscales" />
-        </div>
-        <div class="joms-form__group">
-            <label>Letrados administración de justicia</label>
-            <input type="checkbox" name="value0[]" value="Letrados administración de justicia" />
-        </div>
-        <div class="joms-form__group">
-            <label>Cuerpo de gestión</label>
-            <input type="checkbox" name="value0[]" value="Cuerpo de gestión" />
-        </div>
-        <div class="joms-form__group">
-            <label>Cuerpo de tramitación</label>
-            <input type="checkbox" name="value0[]" value="Cuerpo de tramitación" />
-        </div>
-        <div class="joms-form__group">
-            <label>Cuerpo de auxilio judicial</label>
-            <input type="checkbox" name="value0[]" value="Cuerpo de auxilio judicial" />
-        </div>
-        <div class="joms-form__group">
+            <label>Oposición</label>
+            <div>
+                <select name="value0[]">
+                    <option value="Jueces y fiscales">Jueces y fiscales</option>
+                    <option value="Letrados administración de justicia">Letrados administración de justicia</option>
+                    <option value="Cuerpo de gestión">Cuerpo de gestión</option>
+                    <option value="Cuerpo de tramitación">Cuerpo de tramitación</option>
+                    <option value="Cuerpo de auxilio judicial">Cuerpo de auxilio judicial</option>
+                </select>
+            </div>
             <input type="hidden" name="condition0" value="equal" />
             <input type="hidden" name="field0" value="FIELD_OPOSITION" />
             <input type="hidden" name="fieldType0" value="list" />
@@ -106,50 +106,43 @@ defined('_JEXEC') or die();
 
         <!-- Tipo de preparación -->
         <div class="joms-form__group">
-            <label>Presencial</label>
-            <input type="checkbox" name="value1[]" value="Presencial" />
-        </div>
-        <div class="joms-form__group">
-            <label>Online</label>
-            <input type="checkbox" name="value1[]" value="Online" />
-        </div>
-        <div class="joms-form__group">
-            <input type="hidden" name="condition1" value="equal" />
-            <input type="hidden" name="field1" value="FIELD_TYPE_PREPARATION" />
-            <input type="hidden" name="fieldType1" value="checkbox" />
+            <label>Tipo de preparación</label>
+            <div>
+                <input type="checkbox" name="value1[]" value="Presencial" />
+                <span>Presencial</span>
+
+                <input type="checkbox" name="value1[]" value="Online" />
+                <span>Online</span>
+
+                <span></span>
+
+                <input type="hidden" name="condition1" value="equal" />
+                <input type="hidden" name="field1" value="FIELD_TYPE_PREPARATION" />
+                <input type="hidden" name="fieldType1" value="checkbox" />
+            </div>
         </div>
 
         <!-- Tipo de plan de estudio -->
         <div class="joms-form__group">
-            <label>Arrastre</label>
-            <input type="checkbox" name="value2[]" value="Arrastre" />
-        </div>
-        <div class="joms-form__group">
-            <label>Vueltas</label>
-            <input type="checkbox" name="value2[]" value="Vueltas" />
-        </div>
-        <div class="joms-form__group">
-            <label>Mixto</label>
-            <input type="checkbox" name="value2[]" value="Mixto" />
-        </div>
-        <div class="joms-form__group">
-            <label>Libre</label>
-            <input type="checkbox" name="value2[]" value="Libre" />
-        </div>
-        <div class="joms-form__group">
+            <label>Tipo de plan de estudio</label>
+            <div>
+                <input type="checkbox" name="value2[]" value="Arrastre" />
+                <span>Arrastre</span>
+
+                <input type="checkbox" name="value2[]" value="Vueltas" />
+                <span>Vueltas</span>
+
+                <input type="checkbox" name="value2[]" value="Mixto" />
+                <span>Mixto</span>
+
+                <input type="checkbox" name="value2[]" value="Libre" />
+                <span>Libre</span>
+
+                <span></span>
+            </div>
             <input type="hidden" name="condition2" value="equal" />
             <input type="hidden" name="field2" value="FIELD_STUDY_PLAN" />
             <input type="hidden" name="fieldType2" value="checkbox" />
-        </div>
-
-        <!-- Nombre -->
-        <div class="joms-form__group">
-            <input type="text" placeholder="Nombre" name="value3" />
-        </div>
-        <div class="joms-form__group">
-            <input type="hidden" name="condition3" value="contain" />
-            <input type="hidden" name="field3" value="username" />
-            <input type="hidden" name="fieldType3" value="text" />
         </div>
 
         <div class="joms-form__group">
@@ -168,7 +161,8 @@ defined('_JEXEC') or die();
         <script>
             function advanceSearchUpdateKeyList() {
                 var form = document.getElementById("jsform-search-advancesearch");
-                var checkFieldIndexList = [ 0, 1, 2 ];
+                var checkFieldIndexList = [ 1, 2 ];
+                var selectFieldIndexList = [ 0 ];
                 var textFieldIndexList = [];
                 var keyList = [ 3 ];
 
@@ -180,6 +174,24 @@ defined('_JEXEC') or die();
                         checked = checked || form[name][j].checked;
                     }
                     if (checked) {
+                        keyList.push(index);
+                    }
+                    else {
+                        form["condition" + index].disabled = true;
+                        form["field" + index].disabled = true;
+                        form["fieldType" + index].disabled = true;
+                        form[name].disabled = true;
+                    }
+                }
+
+                for (var i = 0; i < selectFieldIndexList.length; i++) {
+                    var some = false;
+                    var index = selectFieldIndexList[i];
+                    var select = form["value" + index + "[]"];
+                    for (var j = 0; j < select.options.length; j++) {
+                        some = some || select.options.item(j).selected;
+                    }
+                    if (some) {
                         keyList.push(index);
                     }
                     else {
