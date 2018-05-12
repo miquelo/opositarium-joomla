@@ -648,22 +648,7 @@ defined('_JEXEC') or die();
             <input type="hidden" name="task" value="advancesearch" />
             <input type="hidden" name="Itemid" value="<?php echo CRoute::getItemId(); ?>" />
             <input type="submit" class="joms-button--primary joms-right" value="<?php echo JText::_("COM_COMMUNITY_SEARCH_BUTTON_TEMP");?>">
-
-            <?php if ($postresult && COwnerHelper::isCommunityAdmin()) { ?>
-            <a href="javascript:" onclick="joms_search_save();"><?php echo JText::_('COM_COMMUNITY_MEMBERLIST_SAVE_SEARCH');?></a>
-            <script>
-                joms_search_history = <?php echo empty($filterJson) ? "''" : $filterJson ?>;
-                joms_search_save = function() {
-                    joms.api.searchSave({
-                        keys: '<?php echo $keyList ?>',
-                        json: joms_search_history,
-                        operator: joms.jQuery('[name=operator]:checked').val(),
-                        avatar_only: joms.jQuery('[name=avatar]')[0].checked
-                    });
-                };
-            </script>
-            <?php } ?>
-
+            
             <input type="hidden" id="key-list" name="key-list" value="" />
         </div>
     </div>
