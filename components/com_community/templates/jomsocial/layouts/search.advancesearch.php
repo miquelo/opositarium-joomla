@@ -628,6 +628,9 @@ defined('_JEXEC') or die();
 </script>
 <!-- advanced search form -->
 <form name="jsform-search-advancesearch" class="js-form joms-form--search" action="<?php echo CRoute::getURI(); ?>" method="GET">
+
+    <input type="hidden" name="operator" id="operator_all" value="or">
+
     <div id="optionContainer">
         <!-- Criteria Container begin -->
         <div id="criteriaContainer"></div>
@@ -636,22 +639,6 @@ defined('_JEXEC') or die();
             <a class="joms-button--neutral joms-button--small" href="javascript:void(0);" onclick="jsAdvanceSearch.action.addCriteria();">
                 <?php echo JText::_("COM_COMMUNITY_ADD_CRITERIA"); ?>
             </a>
-        </div>
-        <div class="joms-form__group">
-            <ul class="joms-list--inline">
-                <li>
-                    <input type="checkbox" name="avatar" id="avatar" value="1" class="joms-checkbox joms-js--"<?php echo ($avatarOnly) ? ' checked="checked"' : ''; ?>>
-                    <?php echo JText::_('COM_COMMUNITY_EVENTS_AVATAR_ONLY'); ?>
-                </li>
-                <li>
-                    <input type="radio" name="operator" id="operator_all" value="and" class="joms-input--radio">
-                    <?php echo JText::_("COM_COMMUNITY_MATCH_ALL_CRITERIA"); ?>
-                </li>
-                <li>
-                    <input type="radio" name="operator" id="operator_any" value="or" class="joms-input--radio">
-                    <?php echo JText::_("COM_COMMUNITY_MATCH_ANY_CRITERIA"); ?>
-                </li>
-            </ul>
         </div>
 
         <div class="joms-form__group">
