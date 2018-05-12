@@ -18,17 +18,6 @@ defined('_JEXEC') or die();
 <div class="joms-page <?php echo (isset($postresult)&& $postresult) ? 'joms-page--search' : ''; ?>">
     <h3 class="joms-page__title"><?php echo JText::_('COM_COMMUNITY_TITLE_CUSTOM_SEARCH'); ?></h3>
     <?php echo $submenu; ?>
-
-    <?php if ($hasMultiprofile && count($multiprofileArr) > 0) { ?>
-    <select class="joms-select" onchange="window.location=this.value;">
-        <?php foreach ($multiprofileArr as $key => $value) { ?>
-        <option value="<?php echo $value['url']; ?>" <?php if ($value['selected']) echo 'selected="selected"'; ?>>
-        <?php echo $value['name']; ?>
-        </option>
-        <?php } ?>
-    </select>
-    <?php } ?>
-
 <script>
 
     joms_tmp_pickadateOpts = {
@@ -80,7 +69,7 @@ defined('_JEXEC') or die();
         <!-- Nombre -->
         <div class="joms-form__group">
             <label>Nombre</label>
-            <input type="text" placeholder="Juan" name="value3" />
+            <input type="text" name="value3" />
 
             <input type="hidden" name="condition3" value="contain" />
             <input type="hidden" name="field3" value="username" />
@@ -146,7 +135,7 @@ defined('_JEXEC') or die();
         </div>
 
         <div class="joms-form__group">
-            <input type="hidden" name="profiletype" value="<?php echo $profileType; ?>"/>
+            <input type="hidden" name="profiletype" value="2"/>
             <input type="hidden" name="option" value="com_community" />
             <input type="hidden" name="view" value="search" />
             <input type="hidden" name="task" value="advancesearch" />
