@@ -159,7 +159,7 @@ defined('_JEXEC') or die();
             <input type="hidden" name="task" value="advancesearch" />
             <input type="hidden" name="Itemid" value="<?php echo CRoute::getItemId(); ?>" />
 
-            <input type="hidden" name="operator" id="operator_all" value="or">
+            <input type="hidden" name="operator" id="operator_all" value="and">
             <input type="hidden" id="key-list" name="key-list" value="0,1,2,3" />
 
             <input type="submit" class="joms-button--primary joms-right" value="<?php echo JText::_("COM_COMMUNITY_SEARCH_BUTTON_TEMP");?>">
