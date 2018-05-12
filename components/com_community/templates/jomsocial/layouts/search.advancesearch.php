@@ -74,7 +74,7 @@ defined('_JEXEC') or die();
 </script>
 
 <!-- advanced search form -->
-<form name="jsform-search-advancesearch" class="js-form joms-form--search" action="<?php echo CRoute::getURI(); ?>" method="GET">
+<form id="jsform-search-advancesearch" name="jsform-search-advancesearch" class="js-form joms-form--search" action="<?php echo CRoute::getURI(); ?>" method="GET" onsubmit="advanceSearchUpdateKeyList()">
     <div id="optionContainer">
 
         <!-- Oposición -->
@@ -160,10 +160,60 @@ defined('_JEXEC') or die();
             <input type="hidden" name="Itemid" value="<?php echo CRoute::getItemId(); ?>" />
 
             <input type="hidden" name="operator" id="operator_all" value="and">
-            <input type="hidden" id="key-list" name="key-list" value="0,1,2,3" />
+            <input type="hidden" id="key-list" name="key-list" />
 
             <input type="submit" class="joms-button--primary joms-right" value="<?php echo JText::_("COM_COMMUNITY_SEARCH_BUTTON_TEMP");?>">
         </div>
+
+        <script>
+            function advanceSearchUpdateKeyList() {
+                var form = document.getElementById("jsform-search-advancesearch");
+                var checkFieldIndexList = [ 0, 1, 2 ];
+                var textFieldIndexList = [];
+                var keyList = [ 3 ];
+
+                for (var i = 0; i < checkFieldIndexList.length; i++) {
+                    var checked = false;
+                    var index = checkFieldIndexList[i];
+                    var name = "value" + index + "[]";
+                    for (var j = 0; j < form[name].length; j++) {
+                        checked = checked || form[name][j].checked;
+                    }
+                    if (checked) {
+                        keyList.push(index);
+                    }
+                    else {
+                        form["condition" + index].disabled = true;
+                        form["field" + index].disabled = true;
+                        form["fieldType" + index].disabled = true;
+                        form[name].disabled = true;
+                    }
+                }
+
+                for (var i = 0; i < textFieldIndexList.length; i++) {
+                    var index = textFieldIndexList[i];
+                    var name = "value" + index;
+                    if (form[name].value.trim().length > 0) {
+                        keyList.push(index);
+                    }
+                    else {
+                        form["condition" + index].disabled = true;
+                        form["field" + index].disabled = true;
+                        form["fieldType" + index].disabled = true;
+                        form[name].disabled = true;
+                    }
+                }
+
+                var keyListValue = "";
+                var keyListSeparator = "";
+                for (var i = 0; i < keyList.length; i++) {
+                    var index = keyList[i];
+                    keyListValue = keyListValue + keyListSeparator + index;
+                    keyListSeparator = ",";
+                }
+                form["key-list"].value = keyListValue;
+            };
+        </script>
     </div>
     <div id="criteriaList" style="clear:both;"></div>
 </form>
