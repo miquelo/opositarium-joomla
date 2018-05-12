@@ -629,7 +629,7 @@ defined('_JEXEC') or die();
 <!-- advanced search form -->
 <form name="jsform-search-advancesearch" class="js-form joms-form--search" action="<?php echo CRoute::getURI(); ?>" method="GET">
 
-    <input type="hidden" name="operator" id="operator_all" value="or" >
+    <input type="hidden" name="operator" id="operator_all" value="or">
 
     <div id="optionContainer">
         <!-- Criteria Container begin -->
