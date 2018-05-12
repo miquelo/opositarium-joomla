@@ -17,7 +17,6 @@ defined('_JEXEC') or die();
 
 <div class="joms-page <?php echo (isset($postresult)&& $postresult) ? 'joms-page--search' : ''; ?>">
     <h3 class="joms-page__title"><?php echo JText::_('COM_COMMUNITY_TITLE_CUSTOM_SEARCH'); ?></h3>
-    <?php echo $submenu; ?>
 <script>
 
     joms_tmp_pickadateOpts = {
