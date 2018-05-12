@@ -73,572 +73,83 @@ defined('_JEXEC') or die();
 
 </script>
 
-<script>
-
-    jsAdvanceSearch = {
-        action: {
-            keynum : 0,
-            dateFormatDesc : '<?php echo JText::_("COM_COMMUNITY_DATE_FORMAT_DESCRIPTION"); ?>',
-            addCriteria: function ( ) {
-                var criteria = "";
-                var keynum = jsAdvanceSearch.action.keynum;
-
-                criteria +='<div id="criteria'+keynum+'" class="joms-form__item">';
-                    criteria +='<span id="selectfield'+keynum+'">';
-                        criteria +='<select name="field'+keynum+'" id="field'+keynum+'" onchange="jsAdvanceSearch.action.changeField(\''+keynum+'\');" class="joms-input">';
-                            <?php
-                            foreach($fields as $label=>$data)
-                            {   
-                                if($data->published && $data->visible) 
-                                {
-                            ?>
-                                    criteria +='<optgroup label="<?php echo addslashes( JText::_($label) );?>">';
-                                        <?php
-                                        foreach($data->fields as $key=>$field)
-                                        {
-                                            if($field->published && ($field->visible == 1 || COwnerHelper::isCommunityAdmin()) && $field->searchable)
-                                            {
-                                                $selected = "";
-                                                if($field->fieldcode == 'username')
-                                                {
-                                                    $selected = "SELECTED";
-                                                }
-                                                $html_data = "";
-                                                $display = "";
-                                                if (in_array($field->type, array('date', 'birthdate')))
-                                                {
-                                                    $params = new CParameter($field->params);
-                                                    $date_format = $params->get('date_format');
-                                                    $date_format = str_replace("y", "yy", $date_format);
-                                                    $date_format = str_replace("Y", "yyyy", $date_format);
-                                                    $date_format = str_replace("m", "mm", $date_format);
-                                                    $date_format = str_replace("F", "mmmm", $date_format);
-                                                    $date_format = str_replace("M", "mmm", $date_format);
-                                                    $date_format = str_replace("n", "m", $date_format);
-                                                    $date_format = str_replace("d", "dd", $date_format);
-                                                    $date_format = str_replace("D", "ddd", $date_format);
-                                                    $date_format = str_replace("j", "d", $date_format);
-                                                    $date_format = str_replace("l", "dddd", $date_format);
-
-                                                    $min_range = $params->get('minrange', -10);
-                                                    $min_range = $min_range === 'today' ? 0 : $min_range;
-                                                    $min_range = CFieldsDate::getRange($min_range);
-
-                                                    $max_range = $params->get('maxrange', 100);
-                                                    $max_range = $max_range === 'today' ? 0 : $max_range;
-                                                    $max_range = CFieldsDate::getRange($max_range);
-
-                                                    // flip date in case of invalid range.
-                                                    if ( isset( $min_range['value'] ) && isset( $max_range['value'] ) ) {
-                                                        if ( ((int) $min_range['year'] ) > ((int) $max_range['year'] ) ) {
-                                                            $temp = $min_range;
-                                                            $min_range = $max_range;
-                                                            $max_range = $temp;
-                                                        }
-                                                    }
-
-                                                    // set minimum range.
-                                                    if ( isset( $min_range['value'] ) ) {
-                                                        $value = explode('-', $min_range['value']);
-                                                        $min_range = ((int) $value[0] ) . '-' . ((int) $value[1] - 1 ) . '-' . ((int) $value[2] );
-                                                    }
-
-                                                    // set maximum range.
-                                                    if ( isset( $max_range['value'] ) ) {
-                                                        $value = explode('-', $max_range['value']);
-                                                        $max_range = ((int) $value[0] ) . '-' . ((int) $value[1] - 1 ) . '-' . ((int) $value[2] );
-                                                    }
-
-                                                    $html_data .= ' data-dateformat="' . $date_format . '"';
-                                                    $html_data .= ' data-minrange="' . $min_range . '"';
-                                                    $html_data .= ' data-maxrange="' . $max_range . '"';
-
-                                                    if ( $params->get('display', 0) == 1 || $params->get('display', 0) == 'date' ) {
-                                                        $html_data .= ' data-display="1"';
-                                                    }
-                                                }
-                                                // set birthdate filed label to Age based on birthdate display param
-                                        ?>
-                                                criteria +='<option value="<?php echo addslashes($field->fieldcode); ?>" <?php echo $selected; ?> <?php echo $html_data; ?>><?php echo (isset($params) && $params->get('display', 0) == 'age' && $field->type == 'birthdate') ? JText::_("COM_COMMUNITY_AGE") : JText::_(addslashes(CStringHelper::trim($field->name)));?></option>';
-                                        <?php
-                                            }
-                                        }
-                                        ?>
-                                    criteria +='</optgroup>';
-                            <?php
-                                }
-                            }
-                            ?>
-                        criteria +='</select>';
-                    criteria +='</span>';
-                    criteria +='<span id="selectcondition'+keynum+'">';
-                        criteria +='<select name="condition'+keynum+'" id="condition'+keynum+'" class="joms-input">';
-                            criteria +='<option value=""></option>';
-                        criteria +='</select>';
-                    criteria +='</span>';
-                    criteria +='<span id="valueinput'+keynum+'" class="joms-input--small">';
-                        criteria +='<input type="text" name="value'+keynum+'" id="value'+keynum+'" class="joms-input"/>';
-                    criteria +='</span>';
-                    criteria +='<span id="valueinput'+keynum+'_2" class="joms-input--small">';
-                    criteria +='</span>';
-                    criteria +='<span id="typeinput'+keynum+'" style="display:none;">';
-                        criteria +='<input type="hidden" name="fieldType'+keynum+'" id="fieldType'+keynum+'" value="" class="joms-input"/>';
-                    criteria +='</span>';
-                    criteria +='<span id="removelink'+keynum+'">';
-                        criteria +='<a href="javascript:void(0);" onclick="jsAdvanceSearch.action.removeCriteria(\''+keynum+'\');" class="joms-button--neutral joms-button--small">';
-                            // criteria +='<?php echo JText::_('COM_COMMUNITY_HIDE_CRITERIA');?>';
-                            criteria +='<svg class="joms-icon" viewBox="0 0 16 18"><use xlink:href="<?php echo CRoute::getURI(); ?>#joms-icon-close"></use></svg>';
-                        criteria +='</a>';
-                    criteria +='</span>';
-                criteria +='</div>';
-
-                var comma = '';
-                if(joms.jQuery('#key-list').val()!="")
-                {
-                    var comma = ',';
-                }
-                joms.jQuery('#key-list').val(joms.jQuery('#key-list').val()+comma+keynum);
-
-
-
-                joms.jQuery('#criteriaContainer').append(criteria);
-                jsAdvanceSearch.action.changeField(keynum);
-                jsAdvanceSearch.action.keynum++;
-            },
-            removeCriteria: function ( id ) {
-                var inputs = [];
-                var _id, _id2;
-                _id = joms.jQuery('#key-list').val();
-                _id2 = _id.split(',');
-
-                joms.jQuery(_id2).each(function() {
-                    if ( this != id && this != "") {
-                        // re-populate
-                        inputs.push(this);
-                    }
-                });
-
-                joms.jQuery("#criteria"+id).remove();
-                joms.jQuery('#key-list').val(inputs.join(','));
-            },
-            getFieldType: function ( fieldcode ) {
-                var type;
-                switch(fieldcode)
-                {
-                    <?php
-                    foreach($fields as $label=>$data)
-                    {
-                        if($data->published && $data->visible)
-                        {
-                            foreach($data->fields as $key=>$field)
-                            {
-                                if($field->published && $field->visible)
-                                {
-                            ?>
-                                    case "<?php echo $field->fieldcode; ?>":
-                                        type = "<?php echo $field->type; ?>";
-                                        break;
-                            <?php
-                                }
-                            }
-                        }
-                    }
-                    ?>
-                    default :
-                        type = "default";
-                }
-                return type;
-            },
-            getListValue: function ( id, fieldcode ) {
-                var list;
-                switch(fieldcode)
-                {
-                    <?php
-                    foreach($fields as $label=>$data)
-                    {
-                        if($data->published && $data->visible)
-                        {
-                            foreach($data->fields as $key=>$field)
-                            {
-                                if($field->published && $field->visible)
-                                {
-                                    if(!empty($field->options))
-                                    {
-                                ?>
-                                        case "<?php echo $field->fieldcode; ?>":
-                                            <?php if ($field->type == 'checkbox') { ?>
-
-                                                list    = '';
-                                                list    += '<ul class="joms-list--inline">';
-                                                <?php
-                                                foreach($field->options as $data)
-                                                {
-                                                ?>
-                                                    list += '<li class="joms-list__item"><input type="checkbox" name="value'+id+'[]" value="<?php echo addslashes(CStringHelper::trim($data)); ?>"> <?php echo addslashes(JText::_(CStringHelper::trim($data))); ?></input></li>';
-                                                <?php
-                                                }
-                                                ?>
-                                                list    += '';
-                                                list    += '</ul>'
-
-                                            <?php } else if ($field->type == 'list') { ?>
-
-                                                list = '<select name="value'+id+'[]" id="value'+id+'" class="joms-input" multiple="multiple">';
-                                                <?php foreach($field->options as $data) { ?>
-                                                    list += '<option value="<?php echo addslashes(CStringHelper::trim($data)); ?>"><?php echo addslashes(JText::_(CStringHelper::trim($data))); ?></option>';
-                                                <?php } ?>
-                                                list +='</select>';
-
-                                            <?php }elseif($field->type == 'country'){
-                                                $countryLib = new CFieldsCountry();
-                                                $countryList = $countryLib->getCountriesList();
-                                            ?>
-                                            list = '<select name="value'+id+'" id="value'+id+'" class="joms-input">';
-                                            <?php
-                                            foreach($countryList as $data=>$country){
-
-                                            ?>
-                                            list +='<option value="<?php echo addslashes(CStringHelper::trim($country)); ?>"><?php echo addslashes(CStringHelper::trim($data)); ?></option>';
-                                            <?php } ?>
-                                            list +='</select>';
-                                            <?php } else { ?>
-                                                list = '<select name="value'+id+'" id="value'+id+'" class="joms-input">';
-                                                <?php
-                                                foreach($field->options as $key=>$data)
-                                                {
-
-                                                $dataValue = ($field->fieldcode=="FIELD_PROFILE_ID_SPECIAL") ? $key : $data;
-
-                                                $displayData = $data;
-                                                    if($field->type == 'country'){
-                                                        //display
-                                                        $displayData = str_replace(' ','',$data);
-                                                        $displayData = 'COM_COMMUNITY_LANG_NAME_'.strtoupper($displayData);
-                                                    }
-                                                ?>
-                                                    list +='<option value="<?php echo addslashes(CStringHelper::trim($dataValue)); ?>"><?php echo addslashes(JText::_(CStringHelper::trim($displayData))); ?></option>';
-                                                <?php
-                                                }
-                                                ?>
-                                                list +='</select>';
-
-                                            <?php } ?>
-                                            break;
-                                <?php
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    ?>
-                    default :
-                        list = '<input type="text" name="value'+id+'" id="value'+id+'" class="joms-input"/>';
-                }
-                return list;
-            },
-            changeField: function ( id ) {
-                var value, type, condHTML, listValue;
-                var cond = [];
-                var conditions = new Array();
-                conditions['contain']               = "<?php echo addslashes(CStringHelper::trim(JText::_('COM_COMMUNITY_CONTAIN'))); ?>";
-                conditions['between']               = "<?php echo addslashes(CStringHelper::trim(JText::_('COM_COMMUNITY_BETWEEN'))); ?>";
-                conditions['equal']                 = "<?php echo addslashes(CStringHelper::trim(JText::_('COM_COMMUNITY_EQUAL'))); ?>";
-                conditions['notequal']              = "<?php echo addslashes(CStringHelper::trim(JText::_('COM_COMMUNITY_NOT_EQUAL'))); ?>";
-                conditions['lessthanorequal']       = "<?php echo addslashes(CStringHelper::trim(JText::_('COM_COMMUNITY_LESS_THAN_OR_EQUAL'))); ?>";
-                conditions['greaterthanorequal']    = "<?php echo addslashes(CStringHelper::trim(JText::_('COM_COMMUNITY_GREATER_THAN_OR_EQUAL'))); ?>";
-
-                value   = joms.jQuery('#field'+id).val();
-                type    = jsAdvanceSearch.action.getFieldType(value);
-                this.changeFieldType(type, id);
-
-                switch(type)
-                {
-                    case 'date'     :
-                        cond        = ['between', 'equal', 'notequal', 'lessthanorequal', 'greaterthanorequal'];
-                        listValue   = 0;
-                        break;
-                    case 'time'     :
-                        cond        = ['equal', 'notequal'];
-                        listValue   = 0;
-                        break;
-                    case 'birthdate':
-                        cond        = ['between', 'equal', 'lessthanorequal', 'greaterthanorequal'];
-                        listValue   = 0;
-                        break;
-                    case 'location':
-                        cond        = ['contain'];
-                        listValue   = 0;
-                        break;
-                    case 'checkbox' :
-                    case 'radio'    :
-                    case 'singleselect' :
-                    case 'select'   :
-                    case 'list'     :
-                    case 'country'  :
-                    case 'gender'   :
-                        cond      = ['equal', 'notequal'];
-                        listValue = this.getListValue(id, value);
-                        break;
-                    case 'email'    :
-                    case 'time'     :
-                        cond      = ['equal'];
-                        listValue = 0;
-                        break;
-                    case 'textarea' :
-                    case 'text'     :
-                    default :
-                        if(value == 'useremail')
-                        {
-                            cond    = ['equal'];
-                        }
-                        else
-                        {
-                            cond    = ['contain', 'equal', 'notequal'];
-                        }
-                        listValue = 0;
-                        break;
-                }
-
-                if (value === 'FIELD_RADIUS_SEARCH') {
-                    condHTML = '';
-                    listValue = this.getListValue(id, 'FIELD_RADIUS_SEARCH');
-                } else {
-                    condHTML = '<select class="joms-input" name="condition'+id+'" id="condition'+id+'" onchange="jsAdvanceSearch.action.changeCondition('+id+');">';
-                    joms.jQuery(cond).each(function(){
-                        condHTML +='<option value="'+this+'">'+conditions[this]+'</option>';
-                    });
-                    condHTML +='</select>';
-                }
-
-                joms.jQuery('#selectcondition'+id).html(condHTML);
-                jsAdvanceSearch.action.changeCondition(id);
-                jsAdvanceSearch.action.calendar(type, id);
-                if(listValue!=0){
-                    joms.jQuery('#valueinput'+id).html(listValue);
-                }
-            },
-            addAltInputField: function(type, id) {
-                var cond = joms.jQuery( '#condition' + id ).val(),
-                    inputField;
-
-                if ( cond === 'between' ) {
-                    if ( type === 'birthdate' || type === 'date' ) {
-                        inputField = '<input type="text" name="value' + id + '_2" id="value' + id + '_2" class="joms-input" value="" title="' + this.dateFormatDesc + '"/>';
-                    } else if ( type === 'time' ) {
-                        inputField = this.getTimeField( 'value' + id + '_2' );
-                    } else {
-                        inputField = '<input type="text" name="value' + id + '_2" id="value' + id + '_2" class="joms-input" value=""/>';
-                    }
-                    inputField = '<span class="joms-input" style="display:inline;border:0 none"> <?php echo JText::_("COM_COMMUNITY_AND") ?> </span>' + inputField;
-                } else {
-                    inputField = '';
-                }
-
-                joms.jQuery('#valueinput'+id+'_2').html(inputField);
-                if ( cond === 'between' ) {
-                    if ( type === 'birthdate' || type === 'date' ) {
-                        var opts = joms.jQuery('#field'+ id);
-                        var opt = joms.jQuery(opts[0].options[ opts[0].options.selectedIndex ]);
-                        var display = +opt.data('display');
-                        var date_format = opt.data('dateformat');
-                        var min = opt.data('minrange');
-                        var max = opt.data('maxrange');
-                        var display = opt.data('display');
-                        if ( display ) {
-                            joms.jQuery( '#value' + id + '_2' ).pickadate( joms.jQuery.extend({}, joms_tmp_pickadateOpts, {
-                                selectYears: 200,
-                                selectMonths: true
-                            }, {
-                                format: date_format ? date_format : joms_tmp_pickadateOpts.format,
-                                min: min ? min.split('-') : undefined,
-                                max: max ? max.split('-') : undefined
-                            }) );
-                        }
-                    }
-                }
-            },
-            getTimeField: function( name ) {
-                var html = '',
-                    label, i;
-
-                // Hours.
-                html += '<select class="joms-select" name="' + name + '[]">';
-                for ( i = 0; i < 24; i++ ) {
-                    label = ( i < 10 ? '0' : '' ) + i;
-                    html += '<option value="' + label + '">' + label + '</option>';
-                }
-                html += '</select> : ';
-
-                // Minutes.
-                html += '<select class="joms-select" name="' + name + '[]">';
-                for ( i = 0; i < 60; i++ ) {
-                    label = ( i < 10 ? '0' : '' ) + i;
-                    html += '<option value="' + label + '">' + label + '</option>';
-                }
-                html += '</select> : ';
-
-                // Seconds.
-                html += '<select class="joms-select" name="' + name + '[]">';
-                for ( i = 0; i < 60; i++ ) {
-                    label = ( i < 10 ? '0' : '' ) + i;
-                    html += '<option value="' + label + '">' + label + '</option>';
-                }
-                html += '</select>';
-
-                return html;
-            },
-            calendar: function(type, id) {
-                var inputField = '';
-                if ( type === 'birthdate' || type === 'date' ) {
-                    var opts = joms.jQuery('#field'+ id);
-                    var opt = joms.jQuery(opts[0].options[ opts[0].options.selectedIndex ]);
-                    var display = +opt.data('display');
-                    var date_format = opt.data('dateformat');
-                }
-                if ( type === 'birthdate' || type === 'date' ) {
-                    inputField += '<input type="text" name="value' + id + '" id="value' + id + '" class="joms-input">';
-                } else if ( type === 'time' ) {
-                    inputField += this.getTimeField( 'value' + id );
-                } else {
-                    inputField += '<input type="text" name="value' + id + '" id="value' + id + '" class="joms-input">';
-                }
-                joms.jQuery('#valueinput'+id).html(inputField);
-                if ( type === 'birthdate' || type === 'date' ) {
-                    var opts = joms.jQuery('#field'+ id);
-                    var opt = joms.jQuery(opts[0].options[ opts[0].options.selectedIndex ]);
-                    var display = +opt.data('display');
-                    var date_format = opt.data('dateformat');
-                    var min = opt.data('minrange');
-                    var max = opt.data('maxrange');
-                    if ( display ) {
-                        joms.jQuery( '#value' + id ).pickadate( joms.jQuery.extend({}, joms_tmp_pickadateOpts, {
-                            selectYears: 200,
-                            selectMonths: true
-                        }, {
-                            format: date_format ? date_format : joms_tmp_pickadateOpts.format,
-                            min: min ? min.split('-') : undefined,
-                            max: max ? max.split('-') : undefined
-                        }) );
-                    }
-                }
-            },
-            changeFieldType: function(type, id) {
-                joms.jQuery('#fieldType'+id).val(type);
-            },
-            changeCondition: function(id) {
-                var type = joms.jQuery('#fieldType'+id).val();
-                this.addAltInputField(type, id);
-            },
-            toggleAgeSearch: function(id,mode) {
-                var cond = joms.jQuery('#condition'+id).val();
-                if(mode == 1){
-                    inputField  = '<input type="text" name="value'+id+'" id="value'+id+'" class="joms-input" value="" />';
-                    joms.jQuery('#valueinput'+id).html(inputField);
-                    if(cond == "between"){
-                        inputField = '<span class="joms-input" style="display:inline;border:0 none"> <?php echo JText::_("COM_COMMUNITY_AND") ?> </span><input type="text" name="value'+id+'_2" id="value'+id+'_2" class="joms-input" value="" />';
-                        joms.jQuery('#valueinput'+id+'_2').html(inputField);
-                    }
-                } else {
-                    jsAdvanceSearch.action.calendar('birthdate',id);
-                    jsAdvanceSearch.action.addAltInputField('birthdate',id);
-                }
-            }
-        }
-    };
-
-    window.joms_queue || (joms_queue = []);
-    joms_queue.push(function() {
-
-        joms.jQuery(document).ready( function() {
-            var searchHistory, operator;
-        <?php if(!empty($filterJson)){?>
-            searchHistory = eval(<?php echo $filterJson; ?>);
-        <?php }else{?>
-            searchHistory = '';
-        <?php }?>
-
-            joms.jQuery('#memberlist-save').click( function(){
-                joms.memberlist.showSaveForm('<?php echo $keyList;?>' , searchHistory );
-            });
-
-            if(searchHistory != ''){
-                var keylist = searchHistory['key-list'].split(',');
-                var num;
-
-                joms.jQuery(keylist).each(function(){
-                    num = jsAdvanceSearch.action.keynum;
-                    jsAdvanceSearch.action.addCriteria();
-                    joms.jQuery('#field'+num).val(searchHistory['field'+this]);
-                    jsAdvanceSearch.action.changeField(num);
-                    joms.jQuery('#condition'+num).val(searchHistory['condition'+this]);
-                    jsAdvanceSearch.action.changeCondition(num);
-
-                    if(searchHistory['fieldType'+num] == "birthdate" && searchHistory['datingsearch_agefrom'] && searchHistory['datingsearch_ageto'] )
-                    {
-                        jsAdvanceSearch.action.toggleAgeSearch(num,1);
-                    }else if( searchHistory['condition'+this] == 'between' && searchHistory['fieldType'+num] == "birthdate" && ( joms.jQuery.isNumeric(searchHistory['value'+this]) || joms.jQuery.isNumeric(searchHistory['value'+this+'_2']) )){
-                        jsAdvanceSearch.action.toggleAgeSearch(num,1);
-                    }
-
-                    if(searchHistory['fieldType'+this] == 'checkbox')
-                    {
-                        var myVal   = searchHistory['value'+this];
-                        if(joms.jQuery.isArray(myVal))
-                        {
-                            joms.jQuery.each(myVal, function(i, chkVal) {
-                                joms.jQuery('input[name="value'+num+'[]"]').each(function() {
-                                    if(this.value == chkVal)
-                                    {
-                                        this.checked = "checked";
-                                    }
-                                });
-                            });
-
-                        }
-                    }
-                    else if(searchHistory['fieldType'+num] == "time")
-                    {
-                        joms.jQuery('select[name="value'+num+'[]"]').each(function( i ) {
-                            this.value = searchHistory['value'+num][i];
-                        });
-                    }else
-                    {
-                        joms.jQuery('#value'+num).val(searchHistory['value'+this]);
-                    }
-
-                    if(searchHistory['condition'+this] == 'between'){
-                        joms.jQuery('#value'+num+'_2').val(searchHistory['value'+this+'_2']);
-                    }
-                })
-
-                if(searchHistory.operator == 'and'){
-                    operator = 'operator_all';
-                }else{
-                    operator = 'operator_any';
-                }
-            }else{
-                operator = 'operator_all';
-                jsAdvanceSearch.action.addCriteria();
-            }
-            joms.jQuery('#'+operator).attr("checked", true);
-        });
-
-    });
-
-</script>
 <!-- advanced search form -->
 <form name="jsform-search-advancesearch" class="js-form joms-form--search" action="<?php echo CRoute::getURI(); ?>" method="GET">
-
-    <input type="hidden" name="operator" id="operator_all" value="or">
-
     <div id="optionContainer">
-        <!-- Criteria Container begin -->
-        <div id="criteriaContainer"></div>
-        <!-- end: Criteria Container -->
+
+        <!-- Oposición -->
         <div class="joms-form__group">
-            <a class="joms-button--neutral joms-button--small" href="javascript:void(0);" onclick="jsAdvanceSearch.action.addCriteria();">
-                <?php echo JText::_("COM_COMMUNITY_ADD_CRITERIA"); ?>
-            </a>
+            <label>Jueces y fiscales</label>
+            <input type="checkbox" name="value0[]" value="Jueces y fiscales" />
+        </div>
+        <div class="joms-form__group">
+            <label>Letrados administración de justicia</label>
+            <input type="checkbox" name="value0[]" value="Letrados administración de justicia" />
+        </div>
+        <div class="joms-form__group">
+            <label>Cuerpo de gestión</label>
+            <input type="checkbox" name="value0[]" value="Cuerpo de gestión" />
+        </div>
+        <div class="joms-form__group">
+            <label>Cuerpo de tramitación</label>
+            <input type="checkbox" name="value0[]" value="Cuerpo de tramitación" />
+        </div>
+        <div class="joms-form__group">
+            <label>Cuerpo de auxilio judicial</label>
+            <input type="checkbox" name="value0[]" value="Cuerpo de auxilio judicial" />
+        </div>
+        <div class="joms-form__group">
+            <input type="hidden" name="condition0" value="equal" />
+            <input type="hidden" name="field0" value="FIELD_OPOSITION" />
+            <input type="hidden" name="fieldType0" value="list" />
+        </div>
+
+        <!-- Tipo de preparación -->
+        <div class="joms-form__group">
+            <label>Presencial</label>
+            <input type="checkbox" name="value1[]" value="Presencial" />
+        </div>
+        <div class="joms-form__group">
+            <label>Online</label>
+            <input type="checkbox" name="value1[]" value="Online" />
+        </div>
+        <div class="joms-form__group">
+            <input type="hidden" name="condition1" value="equal" />
+            <input type="hidden" name="field1" value="FIELD_TYPE_PREPARATION" />
+            <input type="hidden" name="fieldType1" value="checkbox" />
+        </div>
+
+        <!-- Tipo de plan de estudio -->
+        <div class="joms-form__group">
+            <label>Arrastre</label>
+            <input type="checkbox" name="value2[]" value="Arrastre" />
+        </div>
+        <div class="joms-form__group">
+            <label>Vueltas</label>
+            <input type="checkbox" name="value2[]" value="Vueltas" />
+        </div>
+        <div class="joms-form__group">
+            <label>Mixto</label>
+            <input type="checkbox" name="value2[]" value="Mixto" />
+        </div>
+        <div class="joms-form__group">
+            <label>Libre</label>
+            <input type="checkbox" name="value2[]" value="Libre" />
+        </div>
+        <div class="joms-form__group">
+            <input type="hidden" name="condition2" value="equal" />
+            <input type="hidden" name="field2" value="FIELD_STUDY_PLAN" />
+            <input type="hidden" name="fieldType2" value="checkbox" />
+        </div>
+
+        <!-- Nombre -->
+        <div class="joms-form__group">
+            <input type="text" placeholder="Nombre" name="value3" />
+        </div>
+        <div class="joms-form__group">
+            <input type="hidden" name="condition3" value="contain" />
+            <input type="hidden" name="field3" value="username" />
+            <input type="hidden" name="fieldType3" value="text" />
         </div>
 
         <div class="joms-form__group">
@@ -647,9 +158,11 @@ defined('_JEXEC') or die();
             <input type="hidden" name="view" value="search" />
             <input type="hidden" name="task" value="advancesearch" />
             <input type="hidden" name="Itemid" value="<?php echo CRoute::getItemId(); ?>" />
+
+            <input type="hidden" name="operator" id="operator_all" value="or">
+            <input type="hidden" id="key-list" name="key-list" value="0,1,2,3" />
+
             <input type="submit" class="joms-button--primary joms-right" value="<?php echo JText::_("COM_COMMUNITY_SEARCH_BUTTON_TEMP");?>">
-            
-            <input type="hidden" id="key-list" name="key-list" value="" />
         </div>
     </div>
     <div id="criteriaList" style="clear:both;"></div>
